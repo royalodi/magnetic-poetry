@@ -1,0 +1,4438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Magnetic Poetry — Vintage Fridge Studio Deluxe</title>
+  <!-- Favicon using SVG Magnet Emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧲</text></svg>">
+
+  <style>
+    /* ==========================================================================
+       CSS CUSTOM PROPERTIES & THEMING
+       ========================================================================== */
+    :root {
+      /* Fridge Theme: Stainless Steel (Default) */
+      --fridge-base: #d2d7df;
+      --fridge-gradient-1: #e9ecf0;
+      --fridge-gradient-2: #c4cad3;
+      --fridge-gradient-3: #f5f7fa;
+      --fridge-gradient-4: #abb3bf;
+      --fridge-grain: rgba(255, 255, 255, 0.08);
+      --fridge-shadow: rgba(0, 0, 0, 0.25);
+      --seam-color: #8f98a5;
+      --handle-metal-1: #ffffff;
+      --handle-metal-2: #bdc3c7;
+      --handle-metal-3: #7f8c8d;
+      --handle-shadow: rgba(0, 0, 0, 0.35);
+
+      /* Magnet Dimensions & Shadows */
+      --font-magnet: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --magnet-font-size: clamp(12.5px, 3.2vw, 14px);
+      --magnet-padding: clamp(5px, 1.4vw, 6px) clamp(8px, 2.2vw, 10px);
+      --magnet-radius: 3px;
+      --magnet-thickness: #111113;
+      --shadow-resting: 0 1px 3px rgba(0,0,0,0.28), 0 2px 4px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,0,0,0.15);
+      --shadow-lifted: 0 16px 28px rgba(0, 0, 0, 0.35), 0 6px 12px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255,255,255,0.95);
+      --shadow-hover: 0 4px 8px rgba(0,0,0,0.22), 0 2px 4px rgba(0,0,0,0.15);
+
+      /* UI Overlay Glass Colors */
+      --glass-bg: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.65);
+      --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.14);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+
+      /* Magnet Color Swatches (Palette) */
+      --color-cream-bg: #faf7ee;
+      --color-cream-text: #18181b;
+      --color-yellow-bg: #fef08a;
+      --color-yellow-text: #422006;
+      --color-mint-bg: #bbf7d0;
+      --color-mint-text: #052e16;
+      --color-sky-bg: #bae6fd;
+      --color-sky-text: #082f49;
+      --color-lavender-bg: #e9d5ff;
+      --color-lavender-text: #3b0764;
+      --color-coral-bg: #fed7aa;
+      --color-coral-text: #431407;
+      --color-rose-bg: #fbcfe8;
+      --color-rose-text: #500724;
+      --color-noir-bg: #27272a;
+      --color-noir-text: #f4f4f5;
+
+      /* Grid snap dot color */
+      --grid-dot-color: rgba(30, 41, 59, 0.18);
+    }
+
+    /* ==========================================================================
+       FRIDGE SKINS (THEMES)
+       ========================================================================== */
+    body[data-theme="stainless"] {
+      --fridge-base: #d2d7df;
+      --fridge-gradient-1: #e9ecf0;
+      --fridge-gradient-2: #c4cad3;
+      --fridge-gradient-3: #f5f7fa;
+      --fridge-gradient-4: #abb3bf;
+      --fridge-grain: rgba(255, 255, 255, 0.08);
+      --seam-color: #8f98a5;
+      --grid-dot-color: rgba(30, 41, 59, 0.2);
+    }
+
+    body[data-theme="classic-white"] {
+      --fridge-base: #f4f6f9;
+      --fridge-gradient-1: #ffffff;
+      --fridge-gradient-2: #e8ecf2;
+      --fridge-gradient-3: #fbfcfd;
+      --fridge-gradient-4: #dce1ea;
+      --fridge-grain: rgba(255, 255, 255, 0.15);
+      --seam-color: #b8c1cf;
+      --grid-dot-color: rgba(51, 65, 85, 0.18);
+    }
+
+    body[data-theme="retro-mint"] {
+      --fridge-base: #a2d2bf;
+      --fridge-gradient-1: #c4ebd9;
+      --fridge-gradient-2: #8bc3ae;
+      --fridge-gradient-3: #d7f5e7;
+      --fridge-gradient-4: #6fae98;
+      --fridge-grain: rgba(255, 255, 255, 0.12);
+      --seam-color: #558e79;
+      --grid-dot-color: rgba(6, 78, 59, 0.22);
+    }
+
+    body[data-theme="chalkboard"] {
+      --fridge-base: #1e252b;
+      --fridge-gradient-1: #2a3239;
+      --fridge-gradient-2: #1b2126;
+      --fridge-gradient-3: #323b42;
+      --fridge-gradient-4: #151a1e;
+      --fridge-grain: rgba(255, 255, 255, 0.05);
+      --seam-color: #0d1114;
+      --glass-bg: rgba(30, 41, 51, 0.94);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --grid-dot-color: rgba(255, 255, 255, 0.25);
+    }
+
+    body[data-theme="cork-board"] {
+      --fridge-base: #c89666;
+      --fridge-gradient-1: #d8a675;
+      --fridge-gradient-2: #ba8655;
+      --fridge-gradient-3: #e2b282;
+      --fridge-gradient-4: #ab7746;
+      --fridge-grain: rgba(90, 50, 20, 0.12);
+      --seam-color: #784c28;
+      --grid-dot-color: rgba(67, 36, 12, 0.28);
+    }
+
+    body[data-theme="matte-noir"] {
+      --fridge-base: #181a1d;
+      --fridge-gradient-1: #272a2e;
+      --fridge-gradient-2: #141618;
+      --fridge-gradient-3: #31353a;
+      --fridge-gradient-4: #0f1012;
+      --seam-color: #08090a;
+      --glass-bg: rgba(26, 30, 36, 0.94);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --grid-dot-color: rgba(255, 255, 255, 0.2);
+    }
+
+    body[data-theme="copper-blush"] {
+      --fridge-base: #dcb3a4;
+      --fridge-gradient-1: #f2d1c6;
+      --fridge-gradient-2: #c69b8b;
+      --fridge-gradient-3: #fce1d8;
+      --fridge-gradient-4: #ae8170;
+      --seam-color: #8e6252;
+      --grid-dot-color: rgba(100, 40, 20, 0.22);
+    }
+
+    /* ==========================================================================
+       MAGNET SIZES (S / M / L)
+       ========================================================================== */
+    body[data-magnet-size="s"] {
+      --magnet-font-size: clamp(10.5px, 2.7vw, 12px);
+      --magnet-padding: clamp(3px, 1vw, 4px) clamp(6px, 1.6vw, 7px);
+      --magnet-radius: 2px;
+    }
+    body[data-magnet-size="m"] {
+      --magnet-font-size: clamp(12.5px, 3.2vw, 14px);
+      --magnet-padding: clamp(5px, 1.4vw, 6px) clamp(8px, 2.2vw, 10px);
+      --magnet-radius: 3px;
+    }
+    body[data-magnet-size="l"] {
+      --magnet-font-size: clamp(15px, 4vw, 18px);
+      --magnet-padding: clamp(7px, 2vw, 9px) clamp(12px, 3vw, 15px);
+      --magnet-radius: 4px;
+    }
+
+    /* ==========================================================================
+       MAGNET STYLES & FONTS
+       ========================================================================== */
+    body[data-font="typewriter"] {
+      --font-magnet: "Courier New", Courier, monospace;
+    }
+    body[data-font="serif"] {
+      --font-magnet: "Georgia", "Baskerville", "Times New Roman", serif;
+    }
+    body[data-font="handwritten"] {
+      --font-magnet: "Caveat", "Comic Sans MS", "Brush Script MT", cursive, sans-serif;
+    }
+
+    /* Base magnet element */
+    .magnet {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-magnet);
+      font-size: var(--magnet-font-size);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.25px;
+      padding: var(--magnet-padding);
+      border-radius: var(--magnet-radius);
+      box-shadow: var(--shadow-resting);
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      -webkit-touch-callout: none;
+      white-space: nowrap;
+      transition: 
+        transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.18s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        opacity 0.25s ease;
+      will-change: transform, left, top;
+      z-index: 10;
+    }
+
+    /* Rubber magnet backing edge */
+    .magnet::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: calc(var(--magnet-radius) + 0.5px);
+      background: var(--magnet-thickness);
+      z-index: -1;
+      transform: translate(0, 1.2px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Style: Colorful */
+    body[data-magnet-style="colorful"] .magnet {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.22), 0 1px 2px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.6);
+      font-weight: 700;
+    }
+
+    /* Style: Wooden Tile */
+    body[data-magnet-style="wooden"] .magnet {
+      background: linear-gradient(135deg, #d4a373 0%, #bc6c25 55%, #b06520 100%) !important;
+      color: #3b1e06 !important;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+      border: 1px solid #8c4a11;
+      box-shadow: 
+        0 2px 4px rgba(0,0,0,0.35),
+        inset 1px 1px 1px rgba(255,255,255,0.4),
+        inset -1px -1px 1px rgba(0,0,0,0.4) !important;
+      border-radius: 3px !important;
+      letter-spacing: 0.5px;
+    }
+    body[data-magnet-style="wooden"] .magnet::after {
+      background: #4a280c;
+    }
+
+    /* Style: Neon Glow */
+    body[data-magnet-style="neon"] .magnet {
+      background: rgba(13, 17, 23, 0.92) !important;
+      color: #5eead4 !important;
+      border: 1px solid #14b8a6;
+      box-shadow: 
+        0 0 10px rgba(20, 184, 166, 0.55),
+        inset 0 0 6px rgba(20, 184, 166, 0.3),
+        0 4px 8px rgba(0,0,0,0.5) !important;
+      text-shadow: 0 0 5px #14b8a6, 0 0 10px #0d9488;
+      border-radius: 4px !important;
+    }
+    body[data-magnet-style="neon"] .magnet:nth-child(3n+1) {
+      color: #f472b6 !important;
+      border-color: #ec4899;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.55), inset 0 0 6px rgba(236, 72, 153, 0.3), 0 4px 8px rgba(0,0,0,0.5) !important;
+      text-shadow: 0 0 5px #ec4899;
+    }
+    body[data-magnet-style="neon"] .magnet:nth-child(3n+2) {
+      color: #facc15 !important;
+      border-color: #eab308;
+      box-shadow: 0 0 10px rgba(234, 179, 8, 0.55), inset 0 0 6px rgba(234, 179, 8, 0.3), 0 4px 8px rgba(0,0,0,0.5) !important;
+      text-shadow: 0 0 5px #eab308;
+    }
+    body[data-magnet-style="neon"] .magnet::after {
+      background: #000000;
+    }
+
+    /* Style: Handwritten */
+    body[data-magnet-style="handwritten"] .magnet {
+      font-family: "Caveat", "Comic Sans MS", "Brush Script MT", cursive, sans-serif !important;
+      font-size: calc(var(--magnet-font-size) + 3px);
+      font-weight: 700;
+      background: #fffdf5 !important;
+      color: #1e1e24 !important;
+      border: 1px solid #e2ddc7;
+      border-radius: 1px !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.12) !important;
+      transform-origin: center center;
+    }
+    body[data-magnet-style="handwritten"] .magnet::after {
+      background: rgba(40, 40, 40, 0.6);
+      transform: translate(0, 0.8px);
+    }
+
+    /* Palettes */
+    .magnet[data-color="cream"] { background-color: var(--color-cream-bg); color: var(--color-cream-text); }
+    .magnet[data-color="yellow"] { background-color: var(--color-yellow-bg); color: var(--color-yellow-text); }
+    .magnet[data-color="mint"] { background-color: var(--color-mint-bg); color: var(--color-mint-text); }
+    .magnet[data-color="sky"] { background-color: var(--color-sky-bg); color: var(--color-sky-text); }
+    .magnet[data-color="lavender"] { background-color: var(--color-lavender-bg); color: var(--color-lavender-text); }
+    .magnet[data-color="coral"] { background-color: var(--color-coral-bg); color: var(--color-coral-text); }
+    .magnet[data-color="rose"] { background-color: var(--color-rose-bg); color: var(--color-rose-text); }
+    .magnet[data-color="noir"] { background-color: var(--color-noir-bg); color: var(--color-noir-text); }
+
+    /* Animations */
+    @keyframes magnetPop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.24) rotate(4deg); }
+      75% { transform: scale(0.95) rotate(-2deg); }
+      100% { transform: scale(1); }
+    }
+    .magnet.color-pop {
+      animation: magnetPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes snapPulse {
+      0% { transform: scale(1); filter: brightness(1); }
+      40% { transform: scale(1.16); filter: brightness(1.2); box-shadow: 0 0 12px rgba(37, 99, 235, 0.7); }
+      75% { transform: scale(0.97); }
+      100% { transform: scale(1); filter: brightness(1); }
+    }
+    .magnet.snap-animated {
+      animation: snapPulse 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes idleWiggleKeyframes {
+      0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+      25% { transform: translateY(-2px) rotate(calc(var(--rot, 0deg) + 1.8deg)); }
+      50% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+      75% { transform: translateY(1.5px) rotate(calc(var(--rot, 0deg) - 1.8deg)); }
+    }
+    body.idle-wiggle-enabled .magnet:not(.is-dragging) {
+      animation: idleWiggleKeyframes 3.6s ease-in-out infinite;
+    }
+
+    .magnet:hover {
+      box-shadow: var(--shadow-hover);
+      filter: brightness(1.03);
+      z-index: 35;
+    }
+
+    .magnet.is-dragging {
+      cursor: grabbing !important;
+      box-shadow: var(--shadow-lifted) !important;
+      z-index: 9999 !important;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    .magnet.in-delete-zone {
+      filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.85)) !important;
+      opacity: 0.85 !important;
+      transform: scale(0.88) !important;
+    }
+
+    @keyframes deletePuff {
+      0% { transform: scale(1); opacity: 1; filter: blur(0px); }
+      50% { transform: scale(1.3) rotate(8deg); opacity: 0.7; filter: blur(1px); }
+      100% { transform: scale(0); opacity: 0; filter: blur(4px); }
+    }
+    .magnet.puff-out {
+      animation: deletePuff 0.3s forwards cubic-bezier(0.4, 0, 0.2, 1) !important;
+      pointer-events: none;
+    }
+
+    @keyframes highlightPulse {
+      0%, 100% { outline: 2.5px solid #2563eb; outline-offset: 2.5px; }
+      50% { outline: 2.5px solid #93c5fd; outline-offset: 4.5px; }
+    }
+    .magnet.highlighted {
+      animation: highlightPulse 1.2s infinite ease-in-out;
+      z-index: 100;
+    }
+    .magnet.dimmed {
+      opacity: 0.25;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLING (TOUCH OPTIMIZED)
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      overflow-x: hidden;
+      position: fixed;
+      inset: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    /* ==========================================================================
+       FRIDGE CONTAINER & TEXTURE
+       ========================================================================== */
+    .fridge-wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100%;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--fridge-grain) 0px,
+          var(--fridge-grain) 1px,
+          transparent 1px,
+          transparent 3px
+        ),
+        linear-gradient(
+          115deg,
+          var(--fridge-gradient-1) 0%,
+          var(--fridge-gradient-2) 20%,
+          var(--fridge-gradient-3) 42%,
+          var(--fridge-gradient-4) 58%,
+          var(--fridge-gradient-1) 85%,
+          var(--fridge-gradient-2) 100%
+        );
+      transition: background 0.6s ease;
+    }
+
+    .fridge-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: 
+        inset 0 0 clamp(40px, 8vw, 100px) rgba(0, 0, 0, 0.18),
+        inset 0 4px 12px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 16px rgba(0, 0, 0, 0.25);
+      z-index: 1;
+    }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background-image: radial-gradient(var(--grid-dot-color) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+    body.grid-snap-enabled .grid-overlay {
+      opacity: 1;
+    }
+
+    .freezer-seam {
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0.28) 0%, 
+        var(--seam-color) 40%, 
+        rgba(255, 255, 255, 0.5) 100%
+      );
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .fridge-handle {
+      position: absolute;
+      right: 28px;
+      top: 140px;
+      width: 18px;
+      height: 380px;
+      border-radius: 9px;
+      background: linear-gradient(
+        90deg,
+        #718096 0%,
+        #e2e8f0 35%,
+        #ffffff 50%,
+        #cbd5e1 70%,
+        #4a5568 100%
+      );
+      box-shadow: 
+        -8px 12px 24px var(--handle-shadow),
+        inset 0 1px 2px #fff,
+        inset 0 -1px 2px #2d3748;
+      pointer-events: none;
+      z-index: 4;
+      transition: opacity 0.3s;
+    }
+
+    .fridge-handle::before,
+    .fridge-handle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 18px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #e2e8f0, #718096);
+      box-shadow: -4px 4px 8px rgba(0,0,0,0.3);
+    }
+    .fridge-handle::before { top: 20px; }
+    .fridge-handle::after { bottom: 20px; }
+
+    .brand-badge {
+      position: absolute;
+      top: 18px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(30, 41, 59, 0.55);
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .brand-badge span.logo-metal {
+      display: inline-block;
+      padding: 3px 7px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+      border-radius: 3px;
+      color: #1e293b;
+      box-shadow: 
+        inset 1px 1px 1px #fff,
+        inset -1px -1px 1px #475569,
+        0 1px 3px rgba(0,0,0,0.25);
+    }
+
+    /* ==========================================================================
+       APP HEADER & RESPONSIVE TOOLBAR (DESKTOP + SLIDE-OUT DRAWER)
+       ========================================================================== */
+    .app-header {
+      position: relative;
+      z-index: 50;
+      padding: max(8px, env(safe-area-inset-top, 8px)) 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Mobile Top Bar (Hidden on desktop > 768px) */
+    .mobile-top-bar {
+      display: none;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 800;
+      font-size: clamp(12px, 3.5vw, 14px);
+      letter-spacing: 1px;
+      color: var(--text-main);
+    }
+
+    .mobile-brand .logo-metal {
+      padding: 3px 7px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+      border-radius: 4px;
+      color: #1e293b;
+      font-size: 11px;
+      font-weight: 800;
+      box-shadow: inset 1px 1px 1px #fff, 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .mobile-brand-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .mobile-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mobile-quick-btn {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      border-radius: 8px;
+    }
+
+    .mobile-menu-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .mobile-menu-toggle:active {
+      transform: scale(0.96);
+    }
+    .mobile-menu-toggle svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+    }
+
+    /* Desktop Toolbar Drawer Wrapper */
+    .toolbar-drawer {
+      display: contents;
+    }
+
+    .drawer-backdrop {
+      display: none;
+    }
+
+    .drawer-header {
+      display: none;
+    }
+
+    .drawer-section-title {
+      display: none;
+    }
+
+    .drawer-field-label {
+      display: none;
+    }
+
+    .toggle-btn-label {
+      display: none;
+    }
+
+    .drawer-actions-grid,
+    .drawer-save-row,
+    .drawer-selects-grid,
+    .drawer-toggles-grid,
+    .drawer-section {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-container {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 5px 8px;
+      box-shadow: var(--glass-shadow);
+      flex-wrap: wrap;
+    }
+
+    .toolbar-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      min-height: 36px;
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-size: clamp(11.5px, 2.8vw, 13px);
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+      white-space: nowrap;
+      touch-action: manipulation;
+    }
+
+    .toolbar-btn:hover:not(:disabled) {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: var(--accent);
+    }
+
+    .toolbar-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .toolbar-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .toolbar-btn.btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .toolbar-btn.btn-primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .toolbar-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .toolbar-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .icon-toggle-btn {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+    }
+
+    /* Size Segmented Control */
+    .size-segmented-control {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 7px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .size-btn {
+      border: none;
+      background: transparent;
+      padding: 4px 9px;
+      min-height: 30px;
+      border-radius: 5px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s;
+      touch-action: manipulation;
+    }
+
+    .size-btn.active {
+      background: #ffffff;
+      color: var(--accent);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Select Dropdowns */
+    .toolbar-select-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .toolbar-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      min-height: 36px;
+      padding: 6px 26px 6px 10px;
+      border-radius: 7px;
+      font-size: clamp(12px, 2.8vw, 13px);
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+      touch-action: manipulation;
+    }
+
+    .toolbar-select:hover {
+      background: #ffffff;
+    }
+
+    .toolbar-select-arrow {
+      position: absolute;
+      right: 8px;
+      pointer-events: none;
+      width: 12px;
+      height: 12px;
+      stroke: var(--text-muted);
+      stroke-width: 2.5;
+    }
+
+    .toolbar-divider {
+      width: 1px;
+      height: 22px;
+      background: rgba(0, 0, 0, 0.12);
+      margin: 0 2px;
+    }
+
+    /* ==========================================================================
+       SUB-BAR: CATEGORY CHIPS & SEARCH
+       ========================================================================== */
+    .sub-bar {
+      position: relative;
+      z-index: 40;
+      padding: 0 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .category-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 3px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .category-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-pill {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: clamp(11px, 2.8vw, 12px);
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      touch-action: manipulation;
+    }
+
+    .category-pill:hover,
+    .category-pill.active {
+      color: #ffffff;
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      min-height: 36px;
+      padding: 6px 12px 6px 32px;
+      font-size: clamp(12.5px, 3vw, 13.5px);
+      color: var(--text-main);
+      outline: none;
+      width: 140px;
+      transition: width 0.3s ease, border-color 0.2s, background-color 0.2s;
+      touch-action: manipulation;
+    }
+
+    .search-input:focus {
+      width: 185px;
+      border-color: var(--accent);
+      background: #ffffff;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       FRIDGE CANVAS / POETRY SURFACE
+       ========================================================================== */
+    .fridge-canvas {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .snap-ghost {
+      position: absolute;
+      border: 1.5px dashed rgba(37, 99, 235, 0.7);
+      background: rgba(37, 99, 235, 0.12);
+      border-radius: var(--magnet-radius);
+      pointer-events: none;
+      z-index: 5;
+      display: none;
+      transition: all 0.1s ease;
+    }
+
+    /* ==========================================================================
+       DELETE ZONE AT BOTTOM
+       ========================================================================== */
+    .delete-zone {
+      position: absolute;
+      bottom: max(14px, env(safe-area-inset-bottom, 14px));
+      left: 50%;
+      transform: translateX(-50%) translateY(24px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: min(88vw, 360px);
+      min-height: 48px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px dashed rgba(239, 68, 68, 0.55);
+      border-radius: 30px;
+      color: #dc2626;
+      font-size: clamp(11.5px, 3.2vw, 13px);
+      font-weight: 700;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
+      opacity: 0.6;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 30;
+      pointer-events: none;
+      touch-action: none;
+    }
+
+    .delete-zone.visible {
+      opacity: 0.98;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .delete-zone.hovered {
+      background: rgba(254, 226, 226, 0.98);
+      border-color: #ef4444;
+      border-style: solid;
+      color: #b91c1c;
+      transform: translateX(-50%) translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.35);
+    }
+
+    .delete-zone svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       VINTAGE STICKY NOTE / FRIDGE MEMO
+       ========================================================================== */
+    .fridge-memo {
+      position: absolute;
+      top: 90px;
+      left: 24px;
+      width: clamp(170px, 32vw, 200px);
+      background: #fef08a;
+      padding: 16px 14px 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(10px, 2.7vw, 11px);
+      line-height: 1.45;
+      color: #713f12;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.12);
+      transform: rotate(-2deg);
+      border-radius: 2px;
+      z-index: 12;
+      transition: transform 0.2s, opacity 0.3s;
+      cursor: grab;
+      touch-action: none;
+      -webkit-touch-callout: none;
+    }
+
+    .fridge-memo:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .fridge-memo.is-dragging {
+      cursor: grabbing;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+      z-index: 999;
+    }
+
+    .memo-pin {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #f87171, #dc2626 65%, #991b1b);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    .memo-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .memo-close {
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      color: #92400e;
+      opacity: 0.6;
+      min-width: 32px;
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .memo-close:hover { opacity: 1; }
+
+    .memo-list {
+      list-style-type: none;
+    }
+    .memo-list li {
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 12px;
+    }
+    .memo-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #b45309;
+    }
+
+    /* ==========================================================================
+       MODALS: PROPERLY SIZED AND CENTERED ON ALL SCREENS
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: clamp(10px, 3vw, 20px);
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: clamp(12px, 3vw, 18px);
+      width: 100%;
+      max-width: 520px;
+      max-height: min(90vh, 90dvh);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.28), 0 1px 3px rgba(0, 0, 0, 0.1);
+      transform: scale(0.94) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .modal-card.modal-large {
+      max-width: 680px;
+    }
+
+    .modal-backdrop.open .modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      padding: clamp(12px, 3vw, 18px) clamp(16px, 4vw, 22px);
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-header h3 {
+      font-size: clamp(14px, 3.8vw, 16.5px);
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close-btn {
+      background: #f1f5f9;
+      border: none;
+      min-width: 44px;
+      min-height: 44px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 20px;
+      transition: all 0.2s;
+      touch-action: manipulation;
+    }
+
+    .modal-close-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .modal-body {
+      padding: clamp(14px, 3.5vw, 22px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: clamp(11px, 2.8vw, 12px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-textarea, .form-select-modal {
+      width: 100%;
+      min-height: 44px;
+      padding: 9px 12px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px; /* Prevents auto-zoom on iOS */
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #ffffff;
+      touch-action: manipulation;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select-modal:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .form-hint {
+      font-size: clamp(11px, 2.8vw, 12px);
+      color: #64748b;
+      margin-top: 5px;
+    }
+
+    .word-packs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 12px;
+    }
+
+    .pack-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .pack-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .pack-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .pack-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pack-badge {
+      background: #eff6ff;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .pack-preview {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.45;
+      font-style: italic;
+    }
+
+    .pack-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .pack-footer .btn-add-pack {
+      min-height: 44px;
+      padding: 0 16px;
+    }
+
+    .saved-poems-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .saved-poem-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+
+    .saved-poem-item:hover {
+      background: #f1f5f9;
+    }
+
+    .saved-poem-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .saved-poem-name {
+      font-weight: 700;
+      font-size: 13px;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .saved-poem-meta {
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .saved-poem-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .saved-poem-actions .toolbar-btn {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .export-preview-container {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: min(45vh, 45dvh);
+    }
+
+    .export-preview-img {
+      max-width: 100%;
+      max-height: min(42vh, 42dvh);
+      object-fit: contain;
+    }
+
+    .color-swatches-grid {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .swatch-item {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: transform 0.15s, border-color 0.15s;
+      touch-action: manipulation;
+    }
+
+    .swatch-item:hover {
+      transform: scale(1.08);
+    }
+
+    .swatch-item.selected {
+      border-color: #2563eb;
+      transform: scale(1.12);
+      box-shadow: 0 0 0 2px #fff, 0 3px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    .modal-footer {
+      padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 22px);
+      background: #f8fafc;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .modal-footer .toolbar-btn {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0 16px;
+    }
+
+    .poem-output-box {
+      background: #faf8f5;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 120px;
+      max-height: 280px;
+      overflow-y: auto;
+      font-family: "Georgia", serif;
+      font-size: clamp(14px, 3.5vw, 16px);
+      line-height: 1.8;
+      color: #292524;
+      white-space: pre-wrap;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .poem-empty-tip {
+      color: #a8a29e;
+      font-style: italic;
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    /* Toast Notification */
+    .toast-pill {
+      position: fixed;
+      bottom: max(24px, env(safe-area-inset-bottom, 24px));
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: clamp(12px, 3vw, 13px);
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.28);
+      z-index: 3000;
+      opacity: 0;
+      max-width: min(90vw, 420px);
+      text-align: center;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .toast-pill.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       MEDIA QUERIES (TABLET & MOBILE BREAKPOINTS)
+       ========================================================================== */
+
+    /* Tablet and Mobile (<= 768px) */
+    @media (max-width: 768px) {
+      .app-header {
+        padding: max(8px, env(safe-area-inset-top, 8px)) 12px 6px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .mobile-top-bar {
+        display: flex;
+      }
+
+      .brand-badge {
+        display: none;
+      }
+
+      .fridge-handle {
+        display: none;
+      }
+
+      .freezer-seam {
+        top: 98px;
+        opacity: 0.6;
+      }
+
+      /* Slide-out Drawer Panel */
+      .toolbar-drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 2500;
+        pointer-events: none;
+        visibility: hidden;
+        transition: visibility 0.3s ease;
+        display: block;
+      }
+
+      .toolbar-drawer.open {
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .drawer-backdrop {
+        display: block;
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .toolbar-drawer.open .drawer-backdrop {
+        opacity: 1;
+      }
+
+      .drawer-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(340px, 86vw);
+        background: #ffffff;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 2;
+      }
+
+      /* Match theme background in drawer if dark theme */
+      body[data-theme="chalkboard"] .drawer-panel,
+      body[data-theme="matte-noir"] .drawer-panel {
+        background: #1e252b;
+        color: #f1f5f9;
+      }
+
+      .toolbar-drawer.open .drawer-panel {
+        transform: translateX(0);
+      }
+
+      .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      body[data-theme="chalkboard"] .drawer-header,
+      body[data-theme="matte-noir"] .drawer-header {
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .drawer-title {
+        font-size: 15px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .drawer-close-btn {
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--text-main);
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        touch-action: manipulation;
+      }
+
+      .toolbar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px 18px max(24px, env(safe-area-inset-bottom, 24px));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        flex: 1;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .drawer-section {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .drawer-section-title {
+        display: block;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--text-muted);
+      }
+
+      .drawer-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        width: 100%;
+      }
+
+      .drawer-actions-grid .toolbar-btn {
+        width: 100%;
+        min-height: 44px;
+        justify-content: center;
+        border-radius: 8px;
+      }
+
+      .drawer-save-row {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+      }
+      .drawer-save-row .toolbar-select-wrapper {
+        flex: 1;
+      }
+      .drawer-save-row .toolbar-select {
+        width: 100%;
+        min-height: 44px;
+      }
+      .drawer-save-row .toolbar-btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0 14px;
+      }
+
+      .drawer-selects-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .drawer-select-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+      }
+
+      .drawer-field-label {
+        display: block;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .drawer-select-item .toolbar-select-wrapper,
+      .drawer-select-item .toolbar-select {
+        width: 100%;
+        min-height: 44px;
+      }
+
+      .drawer-select-item .size-segmented-control {
+        width: 100%;
+        height: 44px;
+      }
+      .drawer-select-item .size-btn {
+        flex: 1;
+        height: 100%;
+        min-height: 40px;
+        font-size: 14px;
+      }
+
+      .drawer-toggles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        width: 100%;
+      }
+
+      .drawer-toggles-grid .toolbar-btn {
+        width: 100%;
+        min-height: 48px;
+        flex-direction: column;
+        gap: 3px;
+        font-size: 10.5px;
+        padding: 6px 4px;
+      }
+
+      .toggle-btn-label {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .toolbar-divider {
+        display: none;
+      }
+
+      /* Sub Bar Layout on Mobile */
+      .sub-bar {
+        padding: 8px 12px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-wrapper {
+        width: 100%;
+      }
+
+      .search-input {
+        width: 100% !important;
+        min-height: 42px;
+        font-size: 15px;
+        padding-left: 36px;
+      }
+
+      .category-pills {
+        width: 100%;
+        padding-bottom: 4px;
+      }
+
+      .category-pill {
+        min-height: 38px;
+        padding: 6px 14px;
+        font-size: 12px;
+      }
+
+      /* Fridge Sticky Note on Tablet/Mobile */
+      .fridge-memo {
+        top: 15px;
+        left: 15px;
+        width: clamp(160px, 45vw, 190px);
+        padding: 14px 10px 10px;
+        font-size: 10.5px;
+      }
+      .memo-pin {
+        width: 12px;
+        height: 12px;
+        top: 4px;
+      }
+    }
+
+    /* Small Mobile Phones (<= 480px, e.g. iPhone SE, iPhone 14) */
+    @media (max-width: 480px) {
+      .mobile-brand-sub {
+        display: none;
+      }
+
+      .mobile-quick-btn span {
+        display: none;
+      }
+
+      .mobile-quick-btn {
+        min-width: 40px;
+        width: 40px;
+        padding: 0;
+      }
+
+      .mobile-menu-toggle {
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .sub-bar {
+        padding: 6px 10px;
+        gap: 6px;
+      }
+
+      .search-input {
+        min-height: 40px;
+        font-size: 14px;
+      }
+
+      .category-pill {
+        min-height: 36px;
+        padding: 5px 11px;
+        font-size: 11.5px;
+      }
+
+      .fridge-memo {
+        top: 10px;
+        left: 10px;
+        width: clamp(140px, 46vw, 175px);
+        padding: 12px 8px 8px;
+        font-size: 10px;
+        line-height: 1.35;
+      }
+
+      .delete-zone {
+        width: min(92vw, 320px);
+        min-height: 46px;
+        padding: 8px 14px;
+        font-size: 11.5px;
+      }
+
+      .modal-footer .toolbar-btn {
+        flex: 1 1 45%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    /* Extra Narrow Devices (<= 340px, e.g. iPhone SE 1st gen 320px) */
+    @media (max-width: 340px) {
+      .mobile-brand .logo-metal {
+        padding: 2px 5px;
+        font-size: 10px;
+      }
+      .drawer-actions-grid {
+        grid-template-columns: 1fr;
+      }
+      .drawer-toggles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body data-theme="stainless" data-font="sans" data-magnet-style="classic" data-magnet-size="m">
+
+  <!-- ==========================================================================
+       FRIDGE APP WRAPPER
+       ========================================================================== -->
+  <div class="fridge-wrapper" id="fridgeWrapper">
+    <!-- Snap Grid Dot Overlay -->
+    <div class="grid-overlay" id="gridOverlay"></div>
+
+    <!-- Top Freezer Divider Seam -->
+    <div class="freezer-seam"></div>
+
+    <!-- Fridge Door Handle (Desktop Only) -->
+    <div class="fridge-handle" id="fridgeHandle"></div>
+
+    <!-- Retro Brand Badge (Desktop Only) -->
+    <div class="brand-badge">
+      <span class="logo-metal">POETIQUE</span>
+      <span>DELUXE 1968</span>
+    </div>
+
+    <!-- App Header & Responsive Toolbar Controls -->
+    <header class="app-header">
+      <!-- Mobile Top Bar (Visible <= 768px) -->
+      <div class="mobile-top-bar">
+        <div class="mobile-brand">
+          <span class="logo-metal">POETIQUE</span>
+          <span class="mobile-brand-sub">STUDIO</span>
+        </div>
+        <div class="mobile-header-actions">
+          <button class="toolbar-btn icon-toggle-btn mobile-quick-btn" id="btnUndoQuick" title="Undo (Ctrl+Z)" disabled>
+            <svg viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+          </button>
+          <button class="toolbar-btn icon-toggle-btn mobile-quick-btn" id="btnRedoQuick" title="Redo (Ctrl+Y)" disabled>
+            <svg viewBox="0 0 24 24"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+          </button>
+          <button class="toolbar-btn btn-primary mobile-quick-btn" id="btnNewWordsQuick" title="Add Words">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>+Words</span>
+          </button>
+          <button class="toolbar-btn mobile-menu-toggle" id="btnMobileMenuToggle" aria-label="Open Studio Menu">
+            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <span>Menu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide-Out Drawer on Mobile / Horizontal Toolbar on Desktop -->
+      <div class="toolbar-drawer" id="toolbarDrawer">
+        <!-- Backdrop for mobile drawer -->
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+        <div class="drawer-panel" id="drawerPanel">
+          <!-- Drawer Header (Visible on Mobile) -->
+          <div class="drawer-header">
+            <div class="drawer-title">
+              <span>🧲 Fridge Controls</span>
+            </div>
+            <button class="drawer-close-btn" id="btnDrawerClose" aria-label="Close Menu">&times;</button>
+          </div>
+
+          <!-- Main Toolbar Container -->
+          <div class="toolbar-container" id="toolbarContainer">
+            <!-- Section 1: Actions -->
+            <div class="drawer-section">
+              <span class="drawer-section-title">Composition</span>
+              <div class="drawer-actions-grid">
+                <!-- Shuffle -->
+                <button class="toolbar-btn" id="btnShuffle" title="Scatter words randomly across the fridge">
+                  <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  <span class="btn-text">Shuffle</span>
+                </button>
+
+                <!-- Organize -->
+                <button class="toolbar-btn" id="btnOrganize" title="Sort all words neatly into category columns">
+                  <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                  <span class="btn-text">Organize</span>
+                </button>
+
+                <!-- New Words -->
+                <button class="toolbar-btn btn-primary" id="btnNewWords" title="Create custom word magnets">
+                  <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <span class="btn-text">+ Words</span>
+                </button>
+
+                <!-- Word Packs Modal Trigger -->
+                <button class="toolbar-btn" id="btnWordPacks" title="Themed Word Packs">
+                  <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                  <span class="btn-text">Packs</span>
+                </button>
+
+                <!-- Read Poem -->
+                <button class="toolbar-btn" id="btnReadPoem" title="Scan your poem and read/copy">
+                  <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <span class="btn-text">Read</span>
+                </button>
+
+                <!-- Share as PNG Image -->
+                <button class="toolbar-btn" id="btnExportImage" title="Share as Image (export fridge as PNG)">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span class="btn-text">Export PNG</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="toolbar-divider"></div>
+
+            <!-- Section 2: Library -->
+            <div class="drawer-section">
+              <span class="drawer-section-title">Poem Library</span>
+              <div class="drawer-save-row">
+                <!-- Load Saved Poem Dropdown -->
+                <div class="toolbar-select-wrapper" title="Load a saved poem from localStorage">
+                  <select class="toolbar-select" id="savedPoemsDropdown">
+                    <option value="">📂 Load Poem...</option>
+                  </select>
+                  <svg class="toolbar-select-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+
+                <!-- Save Poem / Manage Library Button -->
+                <button class="toolbar-btn" id="btnSavePoemModal" title="Save current arrangement or manage saved poems">
+                  <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  <span class="btn-text">Save</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="toolbar-divider"></div>
+
+            <!-- Section 3: Styles -->
+            <div class="drawer-section">
+              <span class="drawer-section-title">Theme & Typography</span>
+              <div class="drawer-selects-grid">
+                <!-- Fridge Skin Selector -->
+                <div class="drawer-select-item" title="Fridge Door Skin">
+                  <span class="drawer-field-label">Fridge Door Skin</span>
+                  <div class="toolbar-select-wrapper">
+                    <select class="toolbar-select" id="themeSelect">
+                      <option value="stainless">Stainless Steel</option>
+                      <option value="classic-white">Classic White</option>
+                      <option value="retro-mint">Retro Mint</option>
+                      <option value="chalkboard">Chalkboard Dark</option>
+                      <option value="cork-board">Cork Board</option>
+                      <option value="matte-noir">Matte Charcoal</option>
+                      <option value="copper-blush">Copper Blush</option>
+                    </select>
+                    <svg class="toolbar-select-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+
+                <!-- Magnet Style Selector -->
+                <div class="drawer-select-item" title="Magnet Style">
+                  <span class="drawer-field-label">Magnet Style</span>
+                  <div class="toolbar-select-wrapper">
+                    <select class="toolbar-select" id="magnetStyleSelect">
+                      <option value="classic">Classic Style</option>
+                      <option value="colorful">Colorful Random</option>
+                      <option value="wooden">Wooden Tiles</option>
+                      <option value="neon">Neon Glow</option>
+                      <option value="handwritten">Handwritten</option>
+                    </select>
+                    <svg class="toolbar-select-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+
+                <!-- Magnet Typography Selector -->
+                <div class="drawer-select-item" title="Magnet Font">
+                  <span class="drawer-field-label">Font Family</span>
+                  <div class="toolbar-select-wrapper">
+                    <select class="toolbar-select" id="fontSelect">
+                      <option value="sans">Sans-Serif</option>
+                      <option value="typewriter">Typewriter</option>
+                      <option value="serif">Classic Serif</option>
+                      <option value="handwritten">Handwritten</option>
+                    </select>
+                    <svg class="toolbar-select-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+
+                <!-- Magnet Size Toggle (S / M / L) -->
+                <div class="drawer-select-item" title="Magnet Size (S/M/L)">
+                  <span class="drawer-field-label">Magnet Size</span>
+                  <div class="size-segmented-control" id="sizeToggle">
+                    <button class="size-btn" data-size="s">S</button>
+                    <button class="size-btn active" data-size="m">M</button>
+                    <button class="size-btn" data-size="l">L</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="toolbar-divider"></div>
+
+            <!-- Section 4: Controls & Toggles -->
+            <div class="drawer-section">
+              <span class="drawer-section-title">Settings & Extras</span>
+              <div class="drawer-toggles-grid">
+                <!-- Undo / Redo in toolbar -->
+                <button class="toolbar-btn icon-toggle-btn" id="btnUndo" title="Undo (Ctrl+Z)" disabled>
+                  <svg viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+                  <span class="toggle-btn-label">Undo</span>
+                </button>
+                <button class="toolbar-btn icon-toggle-btn" id="btnRedo" title="Redo (Ctrl+Y)" disabled>
+                  <svg viewBox="0 0 24 24"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+                  <span class="toggle-btn-label">Redo</span>
+                </button>
+
+                <!-- Snap Grid Toggle -->
+                <button class="toolbar-btn icon-toggle-btn" id="btnGridSnap" title="Toggle Snap Grid alignment">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  <span class="toggle-btn-label">Grid</span>
+                </button>
+
+                <!-- Idle Wiggle Toggle -->
+                <button class="toolbar-btn icon-toggle-btn" id="btnWiggle" title="Toggle Idle Wiggle Animation">
+                  <svg viewBox="0 0 24 24"><path d="M2 12c2.5-3 5-3 7.5 0s5 3 7.5 0 5-3 7 0"/></svg>
+                  <span class="toggle-btn-label">Wiggle</span>
+                </button>
+
+                <!-- Sound FX Toggle -->
+                <button class="toolbar-btn icon-toggle-btn" id="btnSoundToggle" title="Toggle Sound FX">
+                  <svg id="soundIconOn" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  <svg id="soundIconOff" style="display:none;" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <span class="toggle-btn-label">Sound</span>
+                </button>
+
+                <!-- Reset Button -->
+                <button class="toolbar-btn icon-toggle-btn" id="btnReset" title="Reset all magnets to original set">
+                  <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                  <span class="toggle-btn-label">Reset</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-bar: Category Filter Chips & Word Search -->
+    <div class="sub-bar">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="wordSearch" placeholder="Find a word..." spellcheck="false" autocomplete="off">
+      </div>
+
+      <div class="category-pills" id="categoryPills">
+        <button class="category-pill active" data-category="all">All Words (<span id="cntAll">116</span>)</button>
+        <button class="category-pill" data-category="noun">Nouns (<span id="cntNoun">25</span>)</button>
+        <button class="category-pill" data-category="verb">Verbs (<span id="cntVerb">20</span>)</button>
+        <button class="category-pill" data-category="adjective">Adjectives (<span id="cntAdj">20</span>)</button>
+        <button class="category-pill" data-category="pronoun">Pronouns (<span id="cntPron">16</span>)</button>
+        <button class="category-pill" data-category="preposition">Prepositions (<span id="cntPrep">15</span>)</button>
+        <button class="category-pill" data-category="other">Articles & Ends (<span id="cntOther">20</span>)</button>
+      </div>
+    </div>
+
+    <!-- Fridge Surface Workspace -->
+    <main class="fridge-canvas" id="canvas">
+      <!-- Magnetic Snap Ghost Target Indicator -->
+      <div class="snap-ghost" id="snapGhost"></div>
+
+      <!-- Draggable Fridge Memo with Instructions -->
+      <div class="fridge-memo" id="fridgeMemo">
+        <div class="memo-pin"></div>
+        <div class="memo-title">
+          <span>FRIDGE RULES</span>
+          <span class="memo-close" id="memoClose" title="Hide note">&times;</span>
+        </div>
+        <ul class="memo-list">
+          <li><strong>Drag</strong> words freely to compose verses.</li>
+          <li><strong>Double-tap/click</strong> magnet to cycle color.</li>
+          <li>Bring words close to <strong>snap</strong> lines or grid.</li>
+          <li>Drag words to the <strong>bottom dock</strong> to delete.</li>
+          <li>Use <strong>Ctrl+Z / Ctrl+Y</strong> to Undo / Redo.</li>
+        </ul>
+      </div>
+
+      <!-- Delete Zone Dock at Bottom -->
+      <div class="delete-zone" id="deleteZone">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+        <span>Drop magnet here to remove</span>
+      </div>
+
+      <!-- Word Magnets are rendered dynamically by JS -->
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 1: ADD NEW WORDS
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalNewWords">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Add Custom Word Magnets</h3>
+        <button class="modal-close-btn" data-close="modalNewWords">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="customWordsInput">Word(s)</label>
+          <input type="text" id="customWordsInput" class="form-input" placeholder="e.g. coffee, serendipity, dream" autofocus>
+          <div class="form-hint">Tip: Enter multiple words separated by spaces or commas.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="customCategorySelect">Category</label>
+          <select id="customCategorySelect" class="form-select-modal">
+            <option value="noun">Noun</option>
+            <option value="verb">Verb</option>
+            <option value="adjective">Adjective</option>
+            <option value="pronoun">Pronoun</option>
+            <option value="preposition">Preposition</option>
+            <option value="other">Other / Modifier</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Initial Color</label>
+          <div class="color-swatches-grid" id="swatchesPicker">
+            <div class="swatch-item selected" data-color="cream" style="background:#faf7ee;" title="Cream"></div>
+            <div class="swatch-item" data-color="yellow" style="background:#fef08a;" title="Sunshine Yellow"></div>
+            <div class="swatch-item" data-color="mint" style="background:#bbf7d0;" title="Mint Green"></div>
+            <div class="swatch-item" data-color="sky" style="background:#bae6fd;" title="Sky Blue"></div>
+            <div class="swatch-item" data-color="lavender" style="background:#e9d5ff;" title="Lavender"></div>
+            <div class="swatch-item" data-color="coral" style="background:#fed7aa;" title="Coral Peach"></div>
+            <div class="swatch-item" data-color="rose" style="background:#fbcfe8;" title="Rose Pink"></div>
+            <div class="swatch-item" data-color="noir" style="background:#27272a;" title="Charcoal Noir"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="toolbar-btn" data-close="modalNewWords">Cancel</button>
+        <button class="toolbar-btn btn-primary" id="btnSubmitNewWords">Stick to Fridge</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: WORD PACKS
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalWordPacks">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3>
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Themed Word Packs
+        </h3>
+        <button class="modal-close-btn" data-close="modalWordPacks">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="form-hint" style="margin-bottom: 14px;">Expand your poetic repertoire with themed packs containing 24 words each:</p>
+        <div class="word-packs-grid" id="wordPacksGrid">
+          <!-- Rendered dynamically by JavaScript -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="toolbar-btn" id="btnAddAllPacks">Add All Packs</button>
+        <button class="toolbar-btn btn-primary" data-close="modalWordPacks">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: SAVE & LOAD POEMS (LOCALSTORAGE)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalSavedPoems">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save & Load Fridge Poems
+        </h3>
+        <button class="modal-close-btn" data-close="modalSavedPoems">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="poemSaveName">Save Current Poem</label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="poemSaveName" class="form-input" placeholder="e.g. Midnight Reverie">
+            <button class="toolbar-btn btn-primary" id="btnSaveCurrentPoem" style="white-space:nowrap;min-height:44px;min-width:70px;">Save</button>
+          </div>
+          <div class="form-hint">Saves word positions, customized magnet styling, colors, and skin.</div>
+        </div>
+
+        <div class="form-group" style="margin-top:20px;">
+          <label class="form-label">Saved Poems Library</label>
+          <div class="saved-poems-list" id="savedPoemsList">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="toolbar-btn btn-primary" data-close="modalSavedPoems">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: READ POEM (TEXT SCANNER)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalPoem">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Your Fridge Poem</h3>
+        <button class="modal-close-btn" data-close="modalPoem">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="form-hint" style="margin-bottom: 12px;">Here is the poem assembled from your word magnets arranged on the fridge:</p>
+        <div class="poem-output-box" id="poemOutputText"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="toolbar-btn" id="btnCopyPoemText">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy to Clipboard
+        </button>
+        <button class="toolbar-btn btn-primary" data-close="modalPoem">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 5: EXPORT FRIDGE AS PNG IMAGE
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalExport">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3>
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Export Fridge Snapshot (PNG)
+        </h3>
+        <button class="modal-close-btn" data-close="modalExport">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="form-hint" style="margin-bottom: 12px;">High-resolution snapshot of your fridge and magnetic poem:</p>
+        <div class="export-preview-container">
+          <img id="exportImgPreview" class="export-preview-img" alt="Fridge Poem Preview">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="toolbar-btn" id="btnCopyImageClipboard">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Image
+        </button>
+        <a id="btnDownloadImage" class="toolbar-btn btn-primary" download="fridge-poem.png" style="text-decoration:none;">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PNG
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Pill Notification -->
+  <div class="toast-pill" id="toastPill">Notification</div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC
+       ========================================================================== -->
+  <script>
+    /**
+     * MAGNETIC POETRY STUDIO DELUXE (FULLY RESPONSIVE ENGINE)
+     * Features:
+     * - Seamless touch & mouse dragging with bounds clipping & double-tap color cycling
+     * - Responsive slide-out control drawer for mobile screens (320px, 390px, 768px)
+     * - 6 Themed Word Packs (24 words each)
+     * - 7 Fridge Skins & 5 Magnet Styles
+     * - Save/Load poems with LocalStorage library
+     * - Web Audio API procedural sounds with mobile audio unlock
+     * - HTML5 Canvas 2x PNG export matching active viewport and theme
+     * - Undo / Redo history stack synchronized with mobile quick buttons
+     */
+
+    // --- INITIAL WORD DATA (116 Curated Classic Words) ---
+    const INITIAL_WORD_LIST = [
+      // 25 Nouns
+      { text: "love", category: "noun" },
+      { text: "whisper", category: "noun" },
+      { text: "storm", category: "noun" },
+      { text: "shadow", category: "noun" },
+      { text: "ocean", category: "noun" },
+      { text: "coffee", category: "noun" },
+      { text: "moon", category: "noun" },
+      { text: "heart", category: "noun" },
+      { text: "night", category: "noun" },
+      { text: "star", category: "noun" },
+      { text: "rain", category: "noun" },
+      { text: "secret", category: "noun" },
+      { text: "flower", category: "noun" },
+      { text: "memory", category: "noun" },
+      { text: "fire", category: "noun" },
+      { text: "silence", category: "noun" },
+      { text: "ghost", category: "noun" },
+      { text: "soul", category: "noun" },
+      { text: "sky", category: "noun" },
+      { text: "morning", category: "noun" },
+      { text: "music", category: "noun" },
+      { text: "river", category: "noun" },
+      { text: "body", category: "noun" },
+      { text: "dream", category: "noun" },
+      { text: "time", category: "noun" },
+
+      // 20 Verbs
+      { text: "dance", category: "verb" },
+      { text: "touch", category: "verb" },
+      { text: "breathe", category: "verb" },
+      { text: "wander", category: "verb" },
+      { text: "burn", category: "verb" },
+      { text: "kiss", category: "verb" },
+      { text: "scream", category: "verb" },
+      { text: "melt", category: "verb" },
+      { text: "disappear", category: "verb" },
+      { text: "sing", category: "verb" },
+      { text: "crave", category: "verb" },
+      { text: "shine", category: "verb" },
+      { text: "sleep", category: "verb" },
+      { text: "break", category: "verb" },
+      { text: "drown", category: "verb" },
+      { text: "remember", category: "verb" },
+      { text: "speak", category: "verb" },
+      { text: "listen", category: "verb" },
+      { text: "wake", category: "verb" },
+      { text: "fall", category: "verb" },
+
+      // 20 Adjectives
+      { text: "dark", category: "adjective" },
+      { text: "sweet", category: "adjective" },
+      { text: "golden", category: "adjective" },
+      { text: "bitter", category: "adjective" },
+      { text: "soft", category: "adjective" },
+      { text: "wild", category: "adjective" },
+      { text: "fragile", category: "adjective" },
+      { text: "endless", category: "adjective" },
+      { text: "cold", category: "adjective" },
+      { text: "deep", category: "adjective" },
+      { text: "tender", category: "adjective" },
+      { text: "silent", category: "adjective" },
+      { text: "strange", category: "adjective" },
+      { text: "hungry", category: "adjective" },
+      { text: "heavy", category: "adjective" },
+      { text: "warm", category: "adjective" },
+      { text: "radiant", category: "adjective" },
+      { text: "lost", category: "adjective" },
+      { text: "electric", category: "adjective" },
+      { text: "raw", category: "adjective" },
+
+      // 16 Pronouns
+      { text: "I", category: "pronoun" },
+      { text: "you", category: "pronoun" },
+      { text: "we", category: "pronoun" },
+      { text: "me", category: "pronoun" },
+      { text: "us", category: "pronoun" },
+      { text: "my", category: "pronoun" },
+      { text: "your", category: "pronoun" },
+      { text: "our", category: "pronoun" },
+      { text: "they", category: "pronoun" },
+      { text: "them", category: "pronoun" },
+      { text: "she", category: "pronoun" },
+      { text: "he", category: "pronoun" },
+      { text: "it", category: "pronoun" },
+      { text: "someone", category: "pronoun" },
+      { text: "nothing", category: "pronoun" },
+      { text: "everything", category: "pronoun" },
+
+      // 15 Prepositions
+      { text: "in", category: "preposition" },
+      { text: "on", category: "preposition" },
+      { text: "with", category: "preposition" },
+      { text: "through", category: "preposition" },
+      { text: "under", category: "preposition" },
+      { text: "beneath", category: "preposition" },
+      { text: "without", category: "preposition" },
+      { text: "between", category: "preposition" },
+      { text: "into", category: "preposition" },
+      { text: "from", category: "preposition" },
+      { text: "over", category: "preposition" },
+      { text: "beside", category: "preposition" },
+      { text: "above", category: "preposition" },
+      { text: "against", category: "preposition" },
+      { text: "around", category: "preposition" },
+
+      // 20 Articles, Conjunctions & Suffixes
+      { text: "and", category: "other" },
+      { text: "the", category: "other" },
+      { text: "a", category: "other" },
+      { text: "but", category: "other" },
+      { text: "because", category: "other" },
+      { text: "if", category: "other" },
+      { text: "as", category: "other" },
+      { text: "yet", category: "other" },
+      { text: "so", category: "other" },
+      { text: "or", category: "other" },
+      { text: "always", category: "other" },
+      { text: "never", category: "other" },
+      { text: "-ing", category: "other" },
+      { text: "-ed", category: "other" },
+      { text: "-s", category: "other" },
+      { text: "-ly", category: "other" },
+      { text: "?", category: "other" },
+      { text: "!", category: "other" },
+      { text: "...", category: "other" },
+      { text: ",", category: "other" }
+    ];
+
+    // --- 6 THEMED WORD PACKS (24 Words Each) ---
+    const THEMED_WORD_PACKS = [
+      {
+        id: "love",
+        name: "Love & Romance",
+        icon: "💖",
+        description: "Intimate, romantic, and longing words for lovers and secret crushes.",
+        words: [
+          { text: "amour", category: "noun" },
+          { text: "passion", category: "noun" },
+          { text: "adore", category: "verb" },
+          { text: "tender", category: "adjective" },
+          { text: "embrace", category: "verb" },
+          { text: "forever", category: "other" },
+          { text: "darling", category: "noun" },
+          { text: "desire", category: "noun" },
+          { text: "cherish", category: "verb" },
+          { text: "longing", category: "noun" },
+          { text: "sweetheart", category: "noun" },
+          { text: "breathless", category: "adjective" },
+          { text: "romance", category: "noun" },
+          { text: "devotion", category: "noun" },
+          { text: "gaze", category: "verb" },
+          { text: "velvety", category: "adjective" },
+          { text: "flutter", category: "verb" },
+          { text: "intimate", category: "adjective" },
+          { text: "entwine", category: "verb" },
+          { text: "bliss", category: "noun" },
+          { text: "soulmate", category: "noun" },
+          { text: "whisper", category: "verb" },
+          { text: "infinite", category: "adjective" },
+          { text: "ecstasy", category: "noun" }
+        ]
+      },
+      {
+        id: "nature",
+        name: "Nature & Wilderness",
+        icon: "🌿",
+        description: "Earthy, organic botanicals, weather elements, and wild landscapes.",
+        words: [
+          { text: "blossom", category: "noun" },
+          { text: "forest", category: "noun" },
+          { text: "mountain", category: "noun" },
+          { text: "horizon", category: "noun" },
+          { text: "twilight", category: "noun" },
+          { text: "breeze", category: "noun" },
+          { text: "moss", category: "noun" },
+          { text: "brook", category: "noun" },
+          { text: "meadow", category: "noun" },
+          { text: "pine", category: "noun" },
+          { text: "autumn", category: "noun" },
+          { text: "sunlight", category: "noun" },
+          { text: "wilderness", category: "noun" },
+          { text: "stormcloud", category: "noun" },
+          { text: "petal", category: "noun" },
+          { text: "dusk", category: "noun" },
+          { text: "canopy", category: "noun" },
+          { text: "thunder", category: "noun" },
+          { text: "frost", category: "noun" },
+          { text: "bloom", category: "verb" },
+          { text: "rustle", category: "verb" },
+          { text: "drift", category: "verb" },
+          { text: "verdant", category: "adjective" },
+          { text: "wild", category: "adjective" }
+        ]
+      },
+      {
+        id: "scifi",
+        name: "Sci-Fi & Cyber",
+        icon: "🚀",
+        description: "Galaxies, synthetic futures, interstellar quantum voyages, and androids.",
+        words: [
+          { text: "galaxy", category: "noun" },
+          { text: "nebula", category: "noun" },
+          { text: "cyber", category: "adjective" },
+          { text: "cyborg", category: "noun" },
+          { text: "android", category: "noun" },
+          { text: "cosmos", category: "noun" },
+          { text: "warp", category: "verb" },
+          { text: "starship", category: "noun" },
+          { text: "quantum", category: "adjective" },
+          { text: "orbit", category: "verb" },
+          { text: "laser", category: "noun" },
+          { text: "alien", category: "noun" },
+          { text: "matrix", category: "noun" },
+          { text: "synthetic", category: "adjective" },
+          { text: "astronaut", category: "noun" },
+          { text: "vortex", category: "noun" },
+          { text: "clone", category: "noun" },
+          { text: "plasma", category: "noun" },
+          { text: "beacon", category: "noun" },
+          { text: "dimension", category: "noun" },
+          { text: "teleport", category: "verb" },
+          { text: "void", category: "noun" },
+          { text: "mutant", category: "noun" },
+          { text: "stellar", category: "adjective" }
+        ]
+      },
+      {
+        id: "food",
+        name: "Food & Culinary",
+        icon: "🥐",
+        description: "Delectable culinary flavors, rich spices, feasts, aromas, and tastes.",
+        words: [
+          { text: "honey", category: "noun" },
+          { text: "crust", category: "noun" },
+          { text: "cinnamon", category: "noun" },
+          { text: "feast", category: "noun" },
+          { text: "devour", category: "verb" },
+          { text: "bittersweet", category: "adjective" },
+          { text: "simmer", category: "verb" },
+          { text: "vanilla", category: "noun" },
+          { text: "savory", category: "adjective" },
+          { text: "chocolate", category: "noun" },
+          { text: "pepper", category: "noun" },
+          { text: "sizzle", category: "verb" },
+          { text: "harvest", category: "noun" },
+          { text: "ripe", category: "adjective" },
+          { text: "wine", category: "noun" },
+          { text: "butter", category: "noun" },
+          { text: "sugar", category: "noun" },
+          { text: "taste", category: "verb" },
+          { text: "crumb", category: "noun" },
+          { text: "roast", category: "verb" },
+          { text: "juicy", category: "adjective" },
+          { text: "bake", category: "verb" },
+          { text: "aroma", category: "noun" },
+          { text: "crave", category: "verb" }
+        ]
+      },
+      {
+        id: "emotions",
+        name: "Emotions & Sensations",
+        icon: "🎭",
+        description: "Deep psychological states, melancholy, ecstasy, serene joy, and longing.",
+        words: [
+          { text: "melancholy", category: "noun" },
+          { text: "joy", category: "noun" },
+          { text: "ache", category: "verb" },
+          { text: "despair", category: "noun" },
+          { text: "serene", category: "adjective" },
+          { text: "furious", category: "adjective" },
+          { text: "serenity", category: "noun" },
+          { text: "yearning", category: "noun" },
+          { text: "lonely", category: "adjective" },
+          { text: "euphoria", category: "noun" },
+          { text: "tranquil", category: "adjective" },
+          { text: "dread", category: "noun" },
+          { text: "hope", category: "noun" },
+          { text: "solace", category: "noun" },
+          { text: "weep", category: "verb" },
+          { text: "rage", category: "noun" },
+          { text: "nostalgic", category: "adjective" },
+          { text: "delight", category: "noun" },
+          { text: "anguish", category: "noun" },
+          { text: "calm", category: "adjective" },
+          { text: "grief", category: "noun" },
+          { text: "bliss", category: "noun" },
+          { text: "laugh", category: "verb" },
+          { text: "tremble", category: "verb" }
+        ]
+      },
+      {
+        id: "philosophy",
+        name: "Philosophy & Abyss",
+        icon: "🏛️",
+        description: "Existential queries, truth, paradoxes, morality, and cosmic questions.",
+        words: [
+          { text: "existence", category: "noun" },
+          { text: "abyss", category: "noun" },
+          { text: "truth", category: "noun" },
+          { text: "illusion", category: "noun" },
+          { text: "paradox", category: "noun" },
+          { text: "consciousness", category: "noun" },
+          { text: "void", category: "noun" },
+          { text: "eternity", category: "noun" },
+          { text: "destiny", category: "noun" },
+          { text: "reason", category: "noun" },
+          { text: "essence", category: "noun" },
+          { text: "universe", category: "noun" },
+          { text: "morality", category: "noun" },
+          { text: "meaning", category: "noun" },
+          { text: "chaos", category: "noun" },
+          { text: "mortal", category: "adjective" },
+          { text: "infinite", category: "adjective" },
+          { text: "wisdom", category: "noun" },
+          { text: "reality", category: "noun" },
+          { text: "thought", category: "noun" },
+          { text: "question", category: "verb" },
+          { text: "reflect", category: "verb" },
+          { text: "being", category: "noun" },
+          { text: "nihilism", category: "noun" }
+        ]
+      }
+    ];
+
+    // Color Swatch Palette for Double-Click Cycling
+    const COLOR_PALETTE = ["cream", "yellow", "mint", "sky", "lavender", "coral", "rose", "noir"];
+
+    // App State
+    let magnetsData = [];
+    let isSoundEnabled = true;
+    let isGridSnapEnabled = false;
+    let isIdleWiggleEnabled = false;
+    let highestZIndex = 100;
+    let activeFilter = "all";
+    const GRID_SIZE = 24;
+
+    // Undo / Redo History Stacks
+    let undoStack = [];
+    let redoStack = [];
+    const MAX_HISTORY = 40;
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Unlock audio on initial mobile touch
+    window.addEventListener("pointerdown", () => {
+      getAudioContext();
+    }, { once: true });
+
+    const SoundEngine = {
+      playDrop() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.exponentialRampToValueAtTime(38, now + 0.05);
+
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.055);
+
+        const clickOsc = ctx.createOscillator();
+        const clickGain = ctx.createGain();
+        clickOsc.type = "triangle";
+        clickOsc.frequency.setValueAtTime(1400, now);
+        clickOsc.frequency.exponentialRampToValueAtTime(600, now + 0.015);
+
+        clickGain.gain.setValueAtTime(0.18, now);
+        clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
+
+        clickOsc.connect(clickGain);
+        clickGain.connect(ctx.destination);
+        clickOsc.start(now);
+        clickOsc.stop(now + 0.02);
+      },
+
+      playPickup() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(650, now);
+        osc.frequency.exponentialRampToValueAtTime(850, now + 0.02);
+
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.03);
+      },
+
+      playSnap() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(420, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.03);
+
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.04);
+      },
+
+      playColorPop() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        const freqs = [523.25, 587.33, 659.25, 783.99, 880.00];
+        const randomFreq = freqs[Math.floor(Math.random() * freqs.length)];
+        osc.frequency.setValueAtTime(randomFreq, now);
+
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.13);
+      },
+
+      playShuffle() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(120 + Math.random() * 80, now);
+            gain.gain.setValueAtTime(0.14, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.045);
+          }, i * 35);
+        }
+      },
+
+      playDelete() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(80, now + 0.08);
+
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.09);
+      },
+
+      playPackAdd() {
+        if (!isSoundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const notes = [440, 554.37, 659.25, 880];
+        notes.forEach((freq, idx) => {
+          setTimeout(() => {
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, now);
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.16);
+          }, idx * 60);
+        });
+      }
+    };
+
+    // --- DOM REFERENCES ---
+    const canvas = document.getElementById("canvas");
+    const snapGhost = document.getElementById("snapGhost");
+    const deleteZone = document.getElementById("deleteZone");
+    const toastPill = document.getElementById("toastPill");
+    const wordSearch = document.getElementById("wordSearch");
+    const categoryPills = document.getElementById("categoryPills");
+    const fridgeMemo = document.getElementById("fridgeMemo");
+    const memoClose = document.getElementById("memoClose");
+    const gridOverlay = document.getElementById("gridOverlay");
+
+    // Drawer references
+    const toolbarDrawer = document.getElementById("toolbarDrawer");
+    const drawerBackdrop = document.getElementById("drawerBackdrop");
+    const btnDrawerClose = document.getElementById("btnDrawerClose");
+    const btnMobileMenuToggle = document.getElementById("btnMobileMenuToggle");
+    const btnUndoQuick = document.getElementById("btnUndoQuick");
+    const btnRedoQuick = document.getElementById("btnRedoQuick");
+    const btnNewWordsQuick = document.getElementById("btnNewWordsQuick");
+
+    // Modal References
+    const modalNewWords = document.getElementById("modalNewWords");
+    const customWordsInput = document.getElementById("customWordsInput");
+    const customCategorySelect = document.getElementById("customCategorySelect");
+    const swatchesPicker = document.getElementById("swatchesPicker");
+    const btnSubmitNewWords = document.getElementById("btnSubmitNewWords");
+
+    const modalWordPacks = document.getElementById("modalWordPacks");
+    const wordPacksGrid = document.getElementById("wordPacksGrid");
+    const btnAddAllPacks = document.getElementById("btnAddAllPacks");
+
+    const modalSavedPoems = document.getElementById("modalSavedPoems");
+    const poemSaveName = document.getElementById("poemSaveName");
+    const btnSaveCurrentPoem = document.getElementById("btnSaveCurrentPoem");
+    const savedPoemsList = document.getElementById("savedPoemsList");
+    const savedPoemsDropdown = document.getElementById("savedPoemsDropdown");
+
+    const modalPoem = document.getElementById("modalPoem");
+    const poemOutputText = document.getElementById("poemOutputText");
+    const btnCopyPoemText = document.getElementById("btnCopyPoemText");
+
+    const modalExport = document.getElementById("modalExport");
+    const exportImgPreview = document.getElementById("exportImgPreview");
+    const btnDownloadImage = document.getElementById("btnDownloadImage");
+    const btnCopyImageClipboard = document.getElementById("btnCopyImageClipboard");
+
+    // Header Controls
+    const btnUndo = document.getElementById("btnUndo");
+    const btnRedo = document.getElementById("btnRedo");
+    const btnShuffle = document.getElementById("btnShuffle");
+    const btnOrganize = document.getElementById("btnOrganize");
+    const btnNewWords = document.getElementById("btnNewWords");
+    const btnWordPacks = document.getElementById("btnWordPacks");
+    const btnReadPoem = document.getElementById("btnReadPoem");
+    const btnExportImage = document.getElementById("btnExportImage");
+    const btnSavePoemModal = document.getElementById("btnSavePoemModal");
+    const themeSelect = document.getElementById("themeSelect");
+    const magnetStyleSelect = document.getElementById("magnetStyleSelect");
+    const fontSelect = document.getElementById("fontSelect");
+    const sizeToggle = document.getElementById("sizeToggle");
+    const btnGridSnap = document.getElementById("btnGridSnap");
+    const btnWiggle = document.getElementById("btnWiggle");
+    const btnSoundToggle = document.getElementById("btnSoundToggle");
+    const soundIconOn = document.getElementById("soundIconOn");
+    const soundIconOff = document.getElementById("soundIconOff");
+    const btnReset = document.getElementById("btnReset");
+
+    // Category Counter Badges
+    const cntAll = document.getElementById("cntAll");
+    const cntNoun = document.getElementById("cntNoun");
+    const cntVerb = document.getElementById("cntVerb");
+    const cntAdj = document.getElementById("cntAdj");
+    const cntPron = document.getElementById("cntPron");
+    const cntPrep = document.getElementById("cntPrep");
+    const cntOther = document.getElementById("cntOther");
+
+    // Drag Tracking State
+    let activeMagnet = null;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let magnetStartX = 0;
+    let magnetStartY = 0;
+    let hasMoved = false;
+    let potentialSnapTarget = null;
+    let isOverDeleteZone = false;
+    let lastTapTime = 0;
+    let lastTapMagnetId = null;
+
+    function generateId() {
+      return "mag_" + Math.random().toString(36).substr(2, 9);
+    }
+
+    function showToast(message) {
+      toastPill.textContent = message;
+      toastPill.classList.add("show");
+      setTimeout(() => {
+        toastPill.classList.remove("show");
+      }, 2500);
+    }
+
+    function pushHistory() {
+      const snapshot = JSON.parse(JSON.stringify(magnetsData));
+      undoStack.push(snapshot);
+      if (undoStack.length > MAX_HISTORY) {
+        undoStack.shift();
+      }
+      redoStack = [];
+      updateHistoryButtons();
+    }
+
+    function updateHistoryButtons() {
+      const canUndo = undoStack.length > 0;
+      const canRedo = redoStack.length > 0;
+      btnUndo.disabled = !canUndo;
+      btnRedo.disabled = !canRedo;
+      if (btnUndoQuick) btnUndoQuick.disabled = !canUndo;
+      if (btnRedoQuick) btnRedoQuick.disabled = !canRedo;
+    }
+
+    function undo() {
+      if (undoStack.length === 0) return;
+      const current = JSON.parse(JSON.stringify(magnetsData));
+      redoStack.push(current);
+
+      const previous = undoStack.pop();
+      magnetsData = previous;
+      ensureMagnetsWithinBounds();
+      renderMagnets();
+      saveState();
+      updateHistoryButtons();
+      showToast("Undone");
+    }
+
+    function redo() {
+      if (redoStack.length === 0) return;
+      const current = JSON.parse(JSON.stringify(magnetsData));
+      undoStack.push(current);
+
+      const next = redoStack.pop();
+      magnetsData = next;
+      ensureMagnetsWithinBounds();
+      renderMagnets();
+      saveState();
+      updateHistoryButtons();
+      showToast("Redone");
+    }
+
+    function loadSavedState() {
+      try {
+        const saved = localStorage.getItem("magnetic_poetry_state_v1");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            magnetsData = parsed;
+            ensureMagnetsWithinBounds();
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn("Could not load from localStorage:", e);
+      }
+
+      initializeDefaultLayout();
+    }
+
+    function ensureMagnetsWithinBounds() {
+      const canvasRect = canvas.getBoundingClientRect();
+      const width = canvasRect.width || window.innerWidth;
+      const height = canvasRect.height || window.innerHeight;
+      if (width <= 0 || height <= 0) return;
+
+      magnetsData.forEach(item => {
+        const maxX = Math.max(10, width - 65);
+        const maxY = Math.max(10, height - 55);
+        if (item.x > maxX) {
+          item.x = Math.max(10, Math.floor(Math.random() * (maxX - 10)));
+        }
+        if (item.y > maxY) {
+          item.y = Math.max(10, Math.floor(Math.random() * (maxY - 10)));
+        }
+        if (item.x < 8) item.x = 8;
+        if (item.y < 8) item.y = 8;
+      });
+    }
+
+    function initializeDefaultLayout() {
+      magnetsData = [];
+      const canvasRect = canvas.getBoundingClientRect();
+      const width = canvasRect.width || window.innerWidth;
+      const height = canvasRect.height || window.innerHeight;
+
+      // Safe boundaries for scattering across all screen sizes (320px to 1400px+)
+      const isMobile = width < 600;
+      const minX = isMobile ? 12 : 210;
+      const maxX = Math.max(minX + 60, width - 90);
+      const minY = isMobile ? 14 : 25;
+      const maxY = Math.max(minY + 80, height - 85);
+
+      INITIAL_WORD_LIST.forEach((item, index) => {
+        const rotation = (Math.random() * 5 - 2.5).toFixed(1);
+        const x = Math.round(minX + Math.random() * (maxX - minX));
+        const y = Math.round(minY + Math.random() * (maxY - minY));
+
+        magnetsData.push({
+          id: generateId(),
+          text: item.text,
+          category: item.category,
+          x: x,
+          y: y,
+          rotation: parseFloat(rotation),
+          color: "cream",
+          zIndex: index + 10
+        });
+      });
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem("magnetic_poetry_state_v1", JSON.stringify(magnetsData));
+      } catch (e) {
+        console.warn("Could not save to localStorage:", e);
+      }
+      updateCategoryCounts();
+    }
+
+    function updateCategoryCounts() {
+      const counts = { all: magnetsData.length, noun: 0, verb: 0, adjective: 0, pronoun: 0, preposition: 0, other: 0 };
+      magnetsData.forEach(m => {
+        if (counts[m.category] !== undefined) {
+          counts[m.category]++;
+        } else {
+          counts.other++;
+        }
+      });
+
+      cntAll.textContent = counts.all;
+      cntNoun.textContent = counts.noun;
+      cntVerb.textContent = counts.verb;
+      cntAdj.textContent = counts.adjective;
+      cntPron.textContent = counts.pronoun;
+      cntPrep.textContent = counts.preposition;
+      cntOther.textContent = counts.other;
+    }
+
+    function renderMagnets() {
+      canvas.querySelectorAll(".magnet").forEach(el => el.remove());
+
+      const fragment = document.createDocumentFragment();
+
+      magnetsData.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "magnet";
+        el.id = item.id;
+        el.dataset.id = item.id;
+        el.dataset.category = item.category;
+        el.dataset.color = item.color || "cream";
+        el.textContent = item.text;
+
+        el.style.left = `${item.x}px`;
+        el.style.top = `${item.y}px`;
+        el.style.zIndex = item.zIndex || 10;
+        el.style.setProperty("--rot", `${item.rotation || 0}deg`);
+        el.style.transform = `rotate(${item.rotation || 0}deg)`;
+        el.style.animationDelay = `${(Math.random() * 3.5).toFixed(2)}s`;
+
+        attachMagnetEvents(el);
+        fragment.appendChild(el);
+      });
+
+      canvas.appendChild(fragment);
+      applyFilterAndSearch();
+      updateCategoryCounts();
+    }
+
+    function cycleMagnetColor(el) {
+      pushHistory();
+      const id = el.dataset.id;
+      const magnetObj = magnetsData.find(m => m.id === id);
+      const currentColor = el.dataset.color || "cream";
+      const currentIndex = COLOR_PALETTE.indexOf(currentColor);
+      const nextIndex = (currentIndex + 1) % COLOR_PALETTE.length;
+      const nextColor = COLOR_PALETTE[nextIndex];
+
+      el.dataset.color = nextColor;
+      if (magnetObj) magnetObj.color = nextColor;
+
+      SoundEngine.playColorPop();
+      el.classList.remove("color-pop");
+      void el.offsetWidth;
+      el.classList.add("color-pop");
+
+      saveState();
+    }
+
+    // --- UNIFIED TOUCH & POINTER DRAG ENGINE ---
+    function startMagnetDrag(targetEl, clientX, clientY, pointerId) {
+      activeMagnet = targetEl;
+      if (pointerId !== undefined && activeMagnet.setPointerCapture) {
+        try { activeMagnet.setPointerCapture(pointerId); } catch(err) {}
+      }
+
+      hasMoved = false;
+      dragStartX = clientX;
+      dragStartY = clientY;
+      magnetStartX = parseFloat(activeMagnet.style.left) || 0;
+      magnetStartY = parseFloat(activeMagnet.style.top) || 0;
+
+      highestZIndex += 1;
+      activeMagnet.style.zIndex = highestZIndex;
+      const magnetObj = magnetsData.find(m => m.id === activeMagnet.dataset.id);
+      if (magnetObj) magnetObj.zIndex = highestZIndex;
+
+      activeMagnet.classList.add("is-dragging");
+      deleteZone.classList.add("visible");
+
+      const currentRotation = (magnetObj && magnetObj.rotation) || 0;
+      activeMagnet.style.transform = `scale(1.08) rotate(${currentRotation + 2}deg)`;
+
+      SoundEngine.playPickup();
+    }
+
+    function moveMagnetDrag(clientX, clientY) {
+      if (!activeMagnet) return;
+
+      const deltaX = clientX - dragStartX;
+      const deltaY = clientY - dragStartY;
+
+      if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) {
+        hasMoved = true;
+      }
+
+      let newX = magnetStartX + deltaX;
+      let newY = magnetStartY + deltaY;
+
+      const canvasRect = canvas.getBoundingClientRect();
+      const magnetRect = activeMagnet.getBoundingClientRect();
+      const padding = 6;
+
+      newX = Math.max(padding, Math.min(newX, canvasRect.width - magnetRect.width - padding));
+      newY = Math.max(padding, Math.min(newY, canvasRect.height - magnetRect.height - padding));
+
+      activeMagnet.style.left = `${newX}px`;
+      activeMagnet.style.top = `${newY}px`;
+
+      checkDeleteZoneHover(clientX, clientY);
+
+      if (!isOverDeleteZone) {
+        checkForMagnetSnap(activeMagnet, newX, newY);
+      } else {
+        snapGhost.style.display = "none";
+        potentialSnapTarget = null;
+      }
+    }
+
+    function endMagnetDrag() {
+      if (!activeMagnet) return;
+
+      activeMagnet.classList.remove("is-dragging");
+      activeMagnet.classList.remove("in-delete-zone");
+      deleteZone.classList.remove("hovered");
+      deleteZone.classList.remove("visible");
+      snapGhost.style.display = "none";
+
+      const magnetId = activeMagnet.dataset.id;
+      const magnetText = activeMagnet.textContent;
+
+      if (isOverDeleteZone) {
+        pushHistory();
+        SoundEngine.playDelete();
+        const elToDelete = activeMagnet;
+        elToDelete.classList.add("puff-out");
+
+        setTimeout(() => {
+          magnetsData = magnetsData.filter(m => m.id !== magnetId);
+          elToDelete.remove();
+          saveState();
+          showToast(`Word "${magnetText}" removed (Ctrl+Z to undo)`);
+        }, 280);
+
+        activeMagnet = null;
+        isOverDeleteZone = false;
+        potentialSnapTarget = null;
+        return;
+      }
+
+      if (hasMoved) {
+        pushHistory();
+      }
+
+      let finalX = parseFloat(activeMagnet.style.left);
+      let finalY = parseFloat(activeMagnet.style.top);
+      let finalRotation = (Math.random() * 3 - 1.5).toFixed(1);
+      let didSnap = false;
+
+      if (potentialSnapTarget) {
+        finalX = potentialSnapTarget.x;
+        finalY = potentialSnapTarget.y;
+        finalRotation = 0;
+        didSnap = true;
+      } else if (isGridSnapEnabled) {
+        finalX = Math.round(finalX / GRID_SIZE) * GRID_SIZE;
+        finalY = Math.round(finalY / GRID_SIZE) * GRID_SIZE;
+        finalRotation = 0;
+        didSnap = true;
+      }
+
+      activeMagnet.style.left = `${finalX}px`;
+      activeMagnet.style.top = `${finalY}px`;
+      activeMagnet.style.setProperty("--rot", `${finalRotation}deg`);
+      activeMagnet.style.transform = `rotate(${finalRotation}deg)`;
+
+      if (didSnap) {
+        activeMagnet.classList.remove("snap-animated");
+        void activeMagnet.offsetWidth;
+        activeMagnet.classList.add("snap-animated");
+        SoundEngine.playSnap();
+      } else {
+        SoundEngine.playDrop();
+      }
+
+      const magnetObj = magnetsData.find(m => m.id === magnetId);
+      if (magnetObj) {
+        magnetObj.x = Math.round(finalX);
+        magnetObj.y = Math.round(finalY);
+        magnetObj.rotation = parseFloat(finalRotation);
+      }
+
+      potentialSnapTarget = null;
+      saveState();
+      activeMagnet = null;
+    }
+
+    function attachMagnetEvents(el) {
+      // Desktop double-click
+      el.addEventListener("dblclick", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        cycleMagnetColor(el);
+      });
+
+      // Pointer event for dragging
+      el.addEventListener("pointerdown", (e) => {
+        if (e.button !== 0 && e.pointerType === "mouse") return;
+        e.preventDefault();
+        startMagnetDrag(el, e.clientX, e.clientY, e.pointerId);
+      });
+
+      // Mobile Touch fallback & fast double-tap detection
+      el.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+          if (e.cancelable) e.preventDefault();
+          if (!activeMagnet) {
+            startMagnetDrag(el, e.touches[0].clientX, e.touches[0].clientY);
+          }
+        }
+      }, { passive: false });
+
+      el.addEventListener("touchend", () => {
+        if (!hasMoved) {
+          const now = Date.now();
+          const id = el.dataset.id;
+          if (lastTapMagnetId === id && (now - lastTapTime) < 350) {
+            cycleMagnetColor(el);
+            lastTapTime = 0;
+            lastTapMagnetId = null;
+          } else {
+            lastTapTime = now;
+            lastTapMagnetId = id;
+          }
+        }
+      });
+    }
+
+    // Window listeners for smooth, uninterrupted drag
+    window.addEventListener("pointermove", (e) => {
+      if (activeMagnet) {
+        moveMagnetDrag(e.clientX, e.clientY);
+      }
+    });
+
+    window.addEventListener("pointerup", () => {
+      if (activeMagnet) endMagnetDrag();
+    });
+
+    window.addEventListener("pointercancel", () => {
+      if (activeMagnet) endMagnetDrag();
+    });
+
+    window.addEventListener("touchmove", (e) => {
+      if (activeMagnet && e.touches.length > 0) {
+        if (e.cancelable) e.preventDefault();
+        moveMagnetDrag(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    window.addEventListener("touchend", () => {
+      if (activeMagnet) endMagnetDrag();
+    });
+
+    window.addEventListener("touchcancel", () => {
+      if (activeMagnet) endMagnetDrag();
+    });
+
+    function checkDeleteZoneHover(clientX, clientY) {
+      const rect = deleteZone.getBoundingClientRect();
+      const buffer = 15;
+      const isOver = (
+        clientX >= rect.left - buffer &&
+        clientX <= rect.right + buffer &&
+        clientY >= rect.top - buffer &&
+        clientY <= rect.bottom + buffer
+      );
+
+      if (isOver !== isOverDeleteZone) {
+        isOverDeleteZone = isOver;
+        if (isOver) {
+          deleteZone.classList.add("hovered");
+          activeMagnet.classList.add("in-delete-zone");
+        } else {
+          deleteZone.classList.remove("hovered");
+          activeMagnet.classList.remove("in-delete-zone");
+        }
+      }
+    }
+
+    function checkForMagnetSnap(currentEl, currentX, currentY) {
+      potentialSnapTarget = null;
+      const snapThresholdX = 35;
+      const snapThresholdY = 16;
+      const wordSpacing = 5;
+      let closestDist = Infinity;
+
+      const allMagnets = canvas.querySelectorAll(".magnet");
+      allMagnets.forEach(otherEl => {
+        if (otherEl === currentEl) return;
+
+        const otherX = parseFloat(otherEl.style.left) || 0;
+        const otherY = parseFloat(otherEl.style.top) || 0;
+        const otherWidth = otherEl.offsetWidth;
+
+        const idealSnapX = otherX + otherWidth + wordSpacing;
+        const idealSnapY = otherY;
+
+        const diffX = Math.abs(currentX - idealSnapX);
+        const diffY = Math.abs(currentY - idealSnapY);
+
+        if (diffX < snapThresholdX && diffY < snapThresholdY) {
+          const dist = diffX + diffY;
+          if (dist < closestDist) {
+            closestDist = dist;
+            potentialSnapTarget = {
+              x: idealSnapX,
+              y: idealSnapY,
+              type: "neighbor",
+              width: currentEl.offsetWidth,
+              height: currentEl.offsetHeight
+            };
+          }
+        }
+      });
+
+      if (!potentialSnapTarget && isGridSnapEnabled) {
+        const gridX = Math.round(currentX / GRID_SIZE) * GRID_SIZE;
+        const gridY = Math.round(currentY / GRID_SIZE) * GRID_SIZE;
+        if (Math.abs(currentX - gridX) < 18 && Math.abs(currentY - gridY) < 18) {
+          potentialSnapTarget = {
+            x: gridX,
+            y: gridY,
+            type: "grid",
+            width: currentEl.offsetWidth,
+            height: currentEl.offsetHeight
+          };
+        }
+      }
+
+      if (potentialSnapTarget) {
+        snapGhost.style.display = "block";
+        snapGhost.style.left = `${potentialSnapTarget.x}px`;
+        snapGhost.style.top = `${potentialSnapTarget.y}px`;
+        snapGhost.style.width = `${potentialSnapTarget.width}px`;
+        snapGhost.style.height = `${potentialSnapTarget.height}px`;
+      } else {
+        snapGhost.style.display = "none";
+      }
+    }
+
+    function shuffleMagnets() {
+      pushHistory();
+      SoundEngine.playShuffle();
+
+      const canvasRect = canvas.getBoundingClientRect();
+      const width = canvasRect.width || window.innerWidth;
+      const height = canvasRect.height || window.innerHeight;
+
+      const minX = 14;
+      const maxX = Math.max(minX + 50, width - 85);
+      const minY = 14;
+      const maxY = Math.max(minY + 60, height - 80);
+
+      magnetsData.forEach((item, index) => {
+        item.x = Math.round(minX + Math.random() * (maxX - minX));
+        item.y = Math.round(minY + Math.random() * (maxY - minY));
+        item.rotation = parseFloat((Math.random() * 6 - 3).toFixed(1));
+
+        const el = document.getElementById(item.id);
+        if (el) {
+          el.style.transition = `left 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 2}ms, top 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 2}ms, transform 0.4s ease`;
+          el.style.left = `${item.x}px`;
+          el.style.top = `${item.y}px`;
+          el.style.setProperty("--rot", `${item.rotation}deg`);
+          el.style.transform = `rotate(${item.rotation}deg)`;
+
+          setTimeout(() => {
+            if (el) el.style.transition = "";
+          }, 550 + index * 2);
+        }
+      });
+
+      saveState();
+      closeDrawer();
+    }
+
+    function organizeIntoCategories() {
+      pushHistory();
+      SoundEngine.playShuffle();
+
+      const categories = ["noun", "verb", "adjective", "pronoun", "preposition", "other"];
+      const canvasRect = canvas.getBoundingClientRect();
+      const canvasWidth = canvasRect.width || window.innerWidth;
+      const canvasHeight = canvasRect.height || window.innerHeight;
+
+      let numCols = 6;
+      if (canvasWidth < 500) {
+        numCols = 2;
+      } else if (canvasWidth < 800) {
+        numCols = 3;
+      } else if (canvasWidth < 1024) {
+        numCols = 4;
+      }
+
+      const colWidth = Math.floor((canvasWidth - 20) / numCols);
+      const startY = 15;
+
+      const grouped = {};
+      categories.forEach(cat => grouped[cat] = []);
+      magnetsData.forEach(m => {
+        const cat = categories.includes(m.category) ? m.category : "other";
+        grouped[cat].push(m);
+      });
+
+      let currentOverallIdx = 0;
+      categories.forEach((cat, catIdx) => {
+        const colIndex = catIdx % numCols;
+        const currentX = 12 + colIndex * colWidth;
+
+        grouped[cat].forEach((item, itemIdx) => {
+          const yOffset = startY + ((itemIdx * 32) % Math.max(180, canvasHeight - 110));
+          item.x = Math.min(currentX, canvasWidth - 85);
+          item.y = yOffset;
+          item.rotation = 0;
+
+          const el = document.getElementById(item.id);
+          if (el) {
+            el.style.transition = `left 0.4s ease ${currentOverallIdx * 6}ms, top 0.4s ease ${currentOverallIdx * 6}ms, transform 0.3s ease`;
+            el.style.left = `${item.x}px`;
+            el.style.top = `${item.y}px`;
+            el.style.setProperty("--rot", "0deg");
+            el.style.transform = `rotate(0deg)`;
+
+            setTimeout(() => {
+              if (el) el.style.transition = "";
+            }, 450 + currentOverallIdx * 6);
+          }
+          currentOverallIdx++;
+        });
+      });
+
+      saveState();
+      closeDrawer();
+      showToast("Words organized into categories!");
+    }
+
+    function handleAddCustomWords() {
+      const rawInput = customWordsInput.value.trim();
+      if (!rawInput) return;
+
+      const category = customCategorySelect.value || "other";
+      const selectedSwatch = swatchesPicker.querySelector(".swatch-item.selected");
+      const chosenColor = selectedSwatch ? selectedSwatch.dataset.color : "cream";
+
+      const words = rawInput
+        .split(/[,\s]+/)
+        .map(w => w.trim())
+        .filter(w => w.length > 0);
+
+      if (words.length === 0) return;
+
+      pushHistory();
+      const canvasRect = canvas.getBoundingClientRect();
+      const spawnCenterX = Math.max(20, (canvasRect.width - 80) / 2);
+      const spawnCenterY = Math.max(20, (canvasRect.height - 60) / 2);
+
+      words.forEach((word, idx) => {
+        highestZIndex += 1;
+        const offset = idx * 16;
+        const newMagnet = {
+          id: generateId(),
+          text: word,
+          category: category,
+          x: Math.round(spawnCenterX + offset),
+          y: Math.round(spawnCenterY + offset),
+          rotation: parseFloat((Math.random() * 4 - 2).toFixed(1)),
+          color: chosenColor,
+          zIndex: highestZIndex
+        };
+
+        magnetsData.push(newMagnet);
+
+        const el = document.createElement("div");
+        el.className = "magnet color-pop";
+        el.id = newMagnet.id;
+        el.dataset.id = newMagnet.id;
+        el.dataset.category = newMagnet.category;
+        el.dataset.color = newMagnet.color;
+        el.textContent = newMagnet.text;
+
+        el.style.left = `${newMagnet.x}px`;
+        el.style.top = `${newMagnet.y}px`;
+        el.style.zIndex = newMagnet.zIndex;
+        el.style.setProperty("--rot", `${newMagnet.rotation}deg`);
+        el.style.transform = `rotate(${newMagnet.rotation}deg)`;
+
+        attachMagnetEvents(el);
+        canvas.appendChild(el);
+      });
+
+      SoundEngine.playColorPop();
+      saveState();
+      closeModal(modalNewWords);
+      customWordsInput.value = "";
+      showToast(`Added ${words.length} new magnet${words.length > 1 ? 's' : ''}!`);
+    }
+
+    function initWordPacksUI() {
+      wordPacksGrid.innerHTML = "";
+
+      THEMED_WORD_PACKS.forEach(pack => {
+        const card = document.createElement("div");
+        card.className = "pack-card";
+        const previewText = pack.words.slice(0, 6).map(w => w.text).join(", ") + "...";
+
+        card.innerHTML = `
+          <div>
+            <div class="pack-header">
+              <span class="pack-title">${pack.icon} ${pack.name}</span>
+              <span class="pack-badge">${pack.words.length} words</span>
+            </div>
+            <div class="pack-preview" style="margin-top:6px;">${pack.description}</div>
+            <div class="pack-preview" style="margin-top:4px;color:#0284c7;">${previewText}</div>
+          </div>
+          <div class="pack-footer">
+            <button class="toolbar-btn btn-primary btn-add-pack" data-pack-id="${pack.id}">+ Add Pack</button>
+          </div>
+        `;
+
+        card.querySelector(".btn-add-pack").addEventListener("click", () => {
+          addWordPack(pack.id);
+        });
+
+        wordPacksGrid.appendChild(card);
+      });
+    }
+
+    function addWordPack(packId) {
+      const pack = THEMED_WORD_PACKS.find(p => p.id === packId);
+      if (!pack) return;
+
+      pushHistory();
+      const canvasRect = canvas.getBoundingClientRect();
+      const width = canvasRect.width || window.innerWidth;
+      const height = canvasRect.height || window.innerHeight;
+
+      const minX = 14;
+      const maxX = Math.max(minX + 60, width - 90);
+      const minY = 14;
+      const maxY = Math.max(minY + 60, height - 80);
+
+      const fragment = document.createDocumentFragment();
+
+      pack.words.forEach((item, idx) => {
+        highestZIndex += 1;
+        const x = Math.round(minX + Math.random() * (maxX - minX));
+        const y = Math.round(minY + Math.random() * (maxY - minY));
+        const rotation = (Math.random() * 5 - 2.5).toFixed(1);
+        const color = COLOR_PALETTE[idx % COLOR_PALETTE.length];
+
+        const magnetObj = {
+          id: generateId(),
+          text: item.text,
+          category: item.category,
+          x: x,
+          y: y,
+          rotation: parseFloat(rotation),
+          color: color,
+          zIndex: highestZIndex
+        };
+
+        magnetsData.push(magnetObj);
+
+        const el = document.createElement("div");
+        el.className = "magnet color-pop";
+        el.id = magnetObj.id;
+        el.dataset.id = magnetObj.id;
+        el.dataset.category = magnetObj.category;
+        el.dataset.color = magnetObj.color;
+        el.textContent = magnetObj.text;
+
+        el.style.left = `${magnetObj.x}px`;
+        el.style.top = `${magnetObj.y}px`;
+        el.style.zIndex = magnetObj.zIndex;
+        el.style.setProperty("--rot", `${magnetObj.rotation}deg`);
+        el.style.transform = `rotate(${magnetObj.rotation}deg)`;
+
+        attachMagnetEvents(el);
+        fragment.appendChild(el);
+      });
+
+      canvas.appendChild(fragment);
+      SoundEngine.playPackAdd();
+      saveState();
+      showToast(`Added ${pack.name} (${pack.words.length} words)!`);
+    }
+
+    function addAllWordPacks() {
+      pushHistory();
+      THEMED_WORD_PACKS.forEach(pack => {
+        addWordPack(pack.id);
+      });
+      closeModal(modalWordPacks);
+      showToast("All themed word packs added to fridge!");
+    }
+
+    function scanAndReadPoem() {
+      if (magnetsData.length === 0) {
+        return "No words on the fridge yet.";
+      }
+
+      const sorted = [...magnetsData].sort((a, b) => a.y - b.y);
+
+      const lines = [];
+      let currentLine = [];
+      let currentLineY = null;
+      const LINE_THRESHOLD = 24;
+
+      sorted.forEach(word => {
+        if (currentLineY === null) {
+          currentLine.push(word);
+          currentLineY = word.y;
+        } else if (Math.abs(word.y - currentLineY) <= LINE_THRESHOLD) {
+          currentLine.push(word);
+        } else {
+          currentLine.sort((a, b) => a.x - b.x);
+          lines.push(currentLine);
+          currentLine = [word];
+          currentLineY = word.y;
+        }
+      });
+
+      if (currentLine.length > 0) {
+        currentLine.sort((a, b) => a.x - b.x);
+        lines.push(currentLine);
+      }
+
+      const formattedLines = lines.map(line => {
+        let lineStr = "";
+        line.forEach(item => {
+          const t = item.text;
+          if (t.startsWith("-") || [",", ".", "!", "?", ":", ";"].includes(t)) {
+            lineStr = lineStr.trimEnd() + (t.startsWith("-") ? t.slice(1) : t) + " ";
+          } else {
+            lineStr += t + " ";
+          }
+        });
+        return lineStr.trim();
+      }).filter(l => l.length > 0);
+
+      return formattedLines.join("\n");
+    }
+
+    function openPoemModal() {
+      const poem = scanAndReadPoem();
+      if (!poem || poem === "No words on the fridge yet.") {
+        poemOutputText.innerHTML = `<div class="poem-empty-tip">Arrange words on your fridge to compose a verse!</div>`;
+      } else {
+        poemOutputText.textContent = poem;
+      }
+      openModal(modalPoem);
+    }
+
+    async function copyPoemToClipboard() {
+      const text = poemOutputText.textContent;
+      if (!text || text.includes("Arrange words on your fridge")) return;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Poem copied to clipboard!");
+      } catch (err) {
+        const temp = document.createElement("textarea");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+        showToast("Poem copied to clipboard!");
+      }
+    }
+
+    function getSavedPoems() {
+      try {
+        const raw = localStorage.getItem("magnetic_poetry_saved_poems_library");
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function savePoemsLibrary(library) {
+      try {
+        localStorage.setItem("magnetic_poetry_saved_poems_library", JSON.stringify(library));
+      } catch (e) {
+        console.warn("Could not save poem library:", e);
+      }
+      updateSavedPoemsDropdown();
+    }
+
+    function updateSavedPoemsDropdown() {
+      const library = getSavedPoems();
+      savedPoemsDropdown.innerHTML = `<option value="">📂 Load Poem...</option>`;
+      library.forEach(p => {
+        const opt = document.createElement("option");
+        opt.value = p.id;
+        opt.textContent = `${p.name} (${p.wordCount} words)`;
+        savedPoemsDropdown.appendChild(opt);
+      });
+    }
+
+    function openSavedPoemsModal() {
+      renderSavedPoemsList();
+      openModal(modalSavedPoems);
+    }
+
+    function renderSavedPoemsList() {
+      const library = getSavedPoems();
+      savedPoemsList.innerHTML = "";
+
+      if (library.length === 0) {
+        savedPoemsList.innerHTML = `<div class="poem-empty-tip" style="padding:16px;">No saved poems yet. Give your fridge arrangement a name above to save it!</div>`;
+        return;
+      }
+
+      library.forEach(entry => {
+        const item = document.createElement("div");
+        item.className = "saved-poem-item";
+        item.innerHTML = `
+          <div class="saved-poem-info">
+            <span class="saved-poem-name">${entry.name}</span>
+            <span class="saved-poem-meta">${entry.wordCount} words • ${new Date(entry.savedAt).toLocaleDateString()}</span>
+          </div>
+          <div class="saved-poem-actions">
+            <button class="toolbar-btn btn-load-poem" data-id="${entry.id}">Load</button>
+            <button class="toolbar-btn icon-toggle-btn btn-delete-poem" data-id="${entry.id}" title="Delete saved poem" style="color:#ef4444;">
+              <svg viewBox="0 0 24 24" style="width:13px;height:13px;"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </div>
+        `;
+
+        item.querySelector(".btn-load-poem").addEventListener("click", () => {
+          loadPoemById(entry.id);
+        });
+
+        item.querySelector(".btn-delete-poem").addEventListener("click", () => {
+          deletePoemById(entry.id);
+        });
+
+        savedPoemsList.appendChild(item);
+      });
+    }
+
+    function handleSaveCurrentPoem() {
+      const name = poemSaveName.value.trim() || `Poem ${new Date().toLocaleTimeString()}`;
+      pushHistory();
+
+      const newEntry = {
+        id: generateId(),
+        name: name,
+        savedAt: new Date().toISOString(),
+        wordCount: magnetsData.length,
+        theme: document.body.dataset.theme || "stainless",
+        magnetStyle: document.body.dataset.magnetStyle || "classic",
+        magnetSize: document.body.dataset.magnetSize || "m",
+        magnets: JSON.parse(JSON.stringify(magnetsData))
+      };
+
+      const library = getSavedPoems();
+      library.unshift(newEntry);
+      savePoemsLibrary(library);
+
+      poemSaveName.value = "";
+      renderSavedPoemsList();
+      showToast(`Poem "${name}" saved!`);
+    }
+
+    function loadPoemById(id) {
+      if (!id) return;
+      const library = getSavedPoems();
+      const entry = library.find(p => p.id === id);
+      if (!entry) return;
+
+      pushHistory();
+      magnetsData = entry.magnets;
+
+      if (entry.theme) {
+        document.body.dataset.theme = entry.theme;
+        themeSelect.value = entry.theme;
+        localStorage.setItem("fridge_theme", entry.theme);
+      }
+      if (entry.magnetStyle) {
+        document.body.dataset.magnetStyle = entry.magnetStyle;
+        magnetStyleSelect.value = entry.magnetStyle;
+        localStorage.setItem("fridge_magnet_style", entry.magnetStyle);
+      }
+      if (entry.magnetSize) {
+        setMagnetSize(entry.magnetSize);
+      }
+
+      ensureMagnetsWithinBounds();
+      renderMagnets();
+      saveState();
+      closeModal(modalSavedPoems);
+      savedPoemsDropdown.value = "";
+      showToast(`Loaded poem "${entry.name}"!`);
+    }
+
+    function deletePoemById(id) {
+      let library = getSavedPoems();
+      library = library.filter(p => p.id !== id);
+      savePoemsLibrary(library);
+      renderSavedPoemsList();
+      showToast("Saved poem deleted");
+    }
+
+    function drawRoundedRect(ctx, x, y, w, h, r) {
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(x, y, w, h, r);
+        ctx.fill();
+        return;
+      }
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function exportFridgeAsImage() {
+      showToast("Rendering fridge image...");
+
+      const canvasRect = canvas.getBoundingClientRect();
+      const width = Math.max(360, Math.round(canvasRect.width));
+      const height = Math.max(480, Math.round(canvasRect.height));
+
+      const scale = 2;
+      const exportCanvas = document.createElement("canvas");
+      exportCanvas.width = width * scale;
+      exportCanvas.height = height * scale;
+      const ctx = exportCanvas.getContext("2d");
+      ctx.scale(scale, scale);
+
+      const currentTheme = document.body.dataset.theme || "stainless";
+
+      if (currentTheme === "chalkboard") {
+        ctx.fillStyle = "#1e252b";
+        ctx.fillRect(0, 0, width, height);
+        for (let i = 0; i < 3000; i++) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.04})`;
+          ctx.fillRect(Math.random() * width, Math.random() * height, 1.5, 1.5);
+        }
+      } else if (currentTheme === "cork-board") {
+        const corkGrad = ctx.createLinearGradient(0, 0, width, height);
+        corkGrad.addColorStop(0, "#d8a675");
+        corkGrad.addColorStop(0.5, "#ba8655");
+        corkGrad.addColorStop(1, "#c89666");
+        ctx.fillStyle = corkGrad;
+        ctx.fillRect(0, 0, width, height);
+        for (let i = 0; i < 3000; i++) {
+          ctx.fillStyle = `rgba(90, 50, 20, ${Math.random() * 0.14})`;
+          ctx.fillRect(Math.random() * width, Math.random() * height, 2, 2);
+        }
+      } else if (currentTheme === "retro-mint") {
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, "#c4ebd9");
+        grad.addColorStop(0.5, "#8bc3ae");
+        grad.addColorStop(1, "#6fae98");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+      } else if (currentTheme === "classic-white") {
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, "#ffffff");
+        grad.addColorStop(0.5, "#e8ecf2");
+        grad.addColorStop(1, "#dce1ea");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+      } else {
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, "#e9ecf0");
+        grad.addColorStop(0.2, "#c4cad3");
+        grad.addColorStop(0.42, "#f5f7fa");
+        grad.addColorStop(0.65, "#abb3bf");
+        grad.addColorStop(1, "#d2d7df");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+      }
+
+      ctx.font = "800 12px sans-serif";
+      ctx.fillStyle = "rgba(30, 41, 59, 0.4)";
+      ctx.fillText("POETIQUE DELUXE 1968", 20, 28);
+
+      const sortedMagnets = [...magnetsData].sort((a, b) => (a.zIndex || 10) - (b.zIndex || 10));
+      const currentMagnetStyle = document.body.dataset.magnetStyle || "classic";
+      const currentSize = document.body.dataset.magnetSize || "m";
+
+      let baseFontSize = 14;
+      if (currentSize === "s") baseFontSize = 11;
+      if (currentSize === "l") baseFontSize = 18;
+
+      sortedMagnets.forEach(m => {
+        const el = document.getElementById(m.id);
+        const w = el ? el.offsetWidth : 60;
+        const h = el ? el.offsetHeight : 28;
+
+        ctx.save();
+        ctx.translate(m.x + w / 2, m.y + h / 2);
+        ctx.rotate(((m.rotation || 0) * Math.PI) / 180);
+
+        ctx.shadowColor = "rgba(0, 0, 0, 0.28)";
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 2;
+
+        const colorMap = {
+          cream: { bg: "#faf7ee", text: "#18181b" },
+          yellow: { bg: "#fef08a", text: "#422006" },
+          mint: { bg: "#bbf7d0", text: "#052e16" },
+          sky: { bg: "#bae6fd", text: "#082f49" },
+          lavender: { bg: "#e9d5ff", text: "#3b0764" },
+          coral: { bg: "#fed7aa", text: "#431407" },
+          rose: { bg: "#fbcfe8", text: "#500724" },
+          noir: { bg: "#27272a", text: "#f4f4f5" }
+        };
+
+        const chosenColor = colorMap[m.color] || colorMap.cream;
+
+        if (currentMagnetStyle === "wooden") {
+          const woodGrad = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
+          woodGrad.addColorStop(0, "#d4a373");
+          woodGrad.addColorStop(0.55, "#bc6c25");
+          woodGrad.addColorStop(1, "#b06520");
+          ctx.fillStyle = woodGrad;
+        } else if (currentMagnetStyle === "neon") {
+          ctx.fillStyle = "rgba(13, 17, 23, 0.95)";
+          ctx.shadowColor = "#14b8a6";
+          ctx.shadowBlur = 10;
+        } else if (currentMagnetStyle === "handwritten") {
+          ctx.fillStyle = "#fffdf5";
+        } else {
+          ctx.fillStyle = chosenColor.bg;
+        }
+
+        drawRoundedRect(ctx, -w / 2, -h / 2, w, h, 3);
+
+        if (currentMagnetStyle === "neon") {
+          ctx.strokeStyle = "#14b8a6";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        } else if (currentMagnetStyle === "wooden") {
+          ctx.strokeStyle = "#8c4a11";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        } else {
+          ctx.strokeStyle = "rgba(0, 0, 0, 0.1)";
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+
+        ctx.shadowColor = "transparent";
+        ctx.shadowBlur = 0;
+
+        let fontStack = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+        if (document.body.dataset.font === "typewriter") fontStack = "'Courier New', Courier, monospace";
+        if (document.body.dataset.font === "serif") fontStack = "Georgia, serif";
+        if (currentMagnetStyle === "handwritten" || document.body.dataset.font === "handwritten") {
+          fontStack = "'Caveat', 'Comic Sans MS', cursive";
+        }
+
+        ctx.font = `600 ${baseFontSize}px ${fontStack}`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        if (currentMagnetStyle === "wooden") {
+          ctx.fillStyle = "#3b1e06";
+        } else if (currentMagnetStyle === "neon") {
+          ctx.fillStyle = "#5eead4";
+          ctx.shadowColor = "#14b8a6";
+          ctx.shadowBlur = 4;
+        } else if (currentMagnetStyle === "handwritten") {
+          ctx.fillStyle = "#1e1e24";
+        } else {
+          ctx.fillStyle = chosenColor.text;
+        }
+
+        ctx.fillText(m.text, 0, 1);
+        ctx.restore();
+      });
+
+      const dataUrl = exportCanvas.toDataURL("image/png");
+      exportImgPreview.src = dataUrl;
+      btnDownloadImage.href = dataUrl;
+      openModal(modalExport);
+    }
+
+    async function copyImageToClipboard() {
+      try {
+        const res = await fetch(exportImgPreview.src);
+        const blob = await res.blob();
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]);
+        showToast("Image copied to clipboard!");
+      } catch (e) {
+        showToast("Clipboard copy not supported; tap Download PNG!");
+      }
+    }
+
+    function setMagnetSize(size) {
+      document.body.dataset.magnetSize = size;
+      localStorage.setItem("fridge_magnet_size", size);
+      sizeToggle.querySelectorAll(".size-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.size === size);
+      });
+    }
+
+    function applyFilterAndSearch() {
+      const query = wordSearch.value.trim().toLowerCase();
+
+      canvas.querySelectorAll(".magnet").forEach(el => {
+        const text = el.textContent.toLowerCase();
+        const category = el.dataset.category;
+
+        const matchesFilter = (activeFilter === "all" || category === activeFilter);
+        const matchesQuery = (!query || text.includes(query));
+
+        if (matchesFilter && matchesQuery) {
+          el.classList.remove("dimmed");
+          if (query && text === query) {
+            el.classList.add("highlighted");
+          } else {
+            el.classList.remove("highlighted");
+          }
+        } else {
+          el.classList.add("dimmed");
+          el.classList.remove("highlighted");
+        }
+      });
+    }
+
+    function resetAllMagnets() {
+      if (confirm("Reset fridge to the original 116 words and layout?")) {
+        pushHistory();
+        localStorage.removeItem("magnetic_poetry_state_v1");
+        initializeDefaultLayout();
+        renderMagnets();
+        closeDrawer();
+        showToast("Fridge reset to original words!");
+      }
+    }
+
+    // Modal Helpers
+    function openModal(modal) {
+      closeDrawer();
+      modal.classList.add("open");
+      const input = modal.querySelector("input");
+      if (input) setTimeout(() => input.focus(), 150);
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove("open");
+    }
+
+    // Drawer helpers
+    function openDrawer() {
+      toolbarDrawer.classList.add("open");
+    }
+
+    function closeDrawer() {
+      toolbarDrawer.classList.remove("open");
+    }
+
+    // --- EVENT BINDINGS ---
+    btnMobileMenuToggle.addEventListener("click", openDrawer);
+    btnDrawerClose.addEventListener("click", closeDrawer);
+    drawerBackdrop.addEventListener("click", closeDrawer);
+
+    // Mobile top bar quick actions
+    btnUndoQuick.addEventListener("click", undo);
+    btnRedoQuick.addEventListener("click", redo);
+    btnNewWordsQuick.addEventListener("click", () => openModal(modalNewWords));
+
+    // Drawer / Toolbar Actions
+    btnUndo.addEventListener("click", undo);
+    btnRedo.addEventListener("click", redo);
+    btnShuffle.addEventListener("click", shuffleMagnets);
+    btnOrganize.addEventListener("click", organizeIntoCategories);
+    btnNewWords.addEventListener("click", () => openModal(modalNewWords));
+    btnWordPacks.addEventListener("click", () => openModal(modalWordPacks));
+    btnAddAllPacks.addEventListener("click", addAllWordPacks);
+    btnReadPoem.addEventListener("click", openPoemModal);
+    btnCopyPoemText.addEventListener("click", copyPoemToClipboard);
+    btnExportImage.addEventListener("click", exportFridgeAsImage);
+    btnCopyImageClipboard.addEventListener("click", copyImageToClipboard);
+    btnSavePoemModal.addEventListener("click", openSavedPoemsModal);
+    btnSaveCurrentPoem.addEventListener("click", handleSaveCurrentPoem);
+    btnReset.addEventListener("click", resetAllMagnets);
+
+    savedPoemsDropdown.addEventListener("change", (e) => {
+      const selectedId = e.target.value;
+      if (selectedId) {
+        loadPoemById(selectedId);
+      }
+    });
+
+    btnGridSnap.addEventListener("click", () => {
+      isGridSnapEnabled = !isGridSnapEnabled;
+      document.body.classList.toggle("grid-snap-enabled", isGridSnapEnabled);
+      btnGridSnap.classList.toggle("active", isGridSnapEnabled);
+      localStorage.setItem("fridge_grid_snap", isGridSnapEnabled ? "1" : "0");
+      showToast(isGridSnapEnabled ? "Grid Snap Enabled" : "Grid Snap Disabled");
+    });
+
+    btnWiggle.addEventListener("click", () => {
+      isIdleWiggleEnabled = !isIdleWiggleEnabled;
+      document.body.classList.toggle("idle-wiggle-enabled", isIdleWiggleEnabled);
+      btnWiggle.classList.toggle("active", isIdleWiggleEnabled);
+      localStorage.setItem("fridge_idle_wiggle", isIdleWiggleEnabled ? "1" : "0");
+      showToast(isIdleWiggleEnabled ? "Idle Wiggle Active" : "Idle Wiggle Paused");
+    });
+
+    sizeToggle.addEventListener("click", (e) => {
+      const btn = e.target.closest(".size-btn");
+      if (!btn) return;
+      setMagnetSize(btn.dataset.size);
+    });
+
+    btnSoundToggle.addEventListener("click", () => {
+      isSoundEnabled = !isSoundEnabled;
+      soundIconOn.style.display = isSoundEnabled ? "block" : "none";
+      soundIconOff.style.display = isSoundEnabled ? "none" : "block";
+      showToast(isSoundEnabled ? "Sound Effects Enabled" : "Sound Effects Muted");
+    });
+
+    themeSelect.addEventListener("change", (e) => {
+      document.body.dataset.theme = e.target.value;
+      localStorage.setItem("fridge_theme", e.target.value);
+    });
+
+    magnetStyleSelect.addEventListener("change", (e) => {
+      document.body.dataset.magnetStyle = e.target.value;
+      localStorage.setItem("fridge_magnet_style", e.target.value);
+    });
+
+    fontSelect.addEventListener("change", (e) => {
+      document.body.dataset.font = e.target.value;
+      localStorage.setItem("fridge_font", e.target.value);
+    });
+
+    categoryPills.addEventListener("click", (e) => {
+      const pill = e.target.closest(".category-pill");
+      if (!pill) return;
+
+      categoryPills.querySelectorAll(".category-pill").forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      activeFilter = pill.dataset.category;
+      applyFilterAndSearch();
+    });
+
+    wordSearch.addEventListener("input", applyFilterAndSearch);
+
+    document.querySelectorAll("[data-close]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const modalId = btn.dataset.close;
+        const modal = document.getElementById(modalId);
+        if (modal) closeModal(modal);
+      });
+    });
+
+    document.querySelectorAll(".modal-backdrop").forEach(backdrop => {
+      backdrop.addEventListener("click", (e) => {
+        if (e.target === backdrop) closeModal(backdrop);
+      });
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === "z") {
+        e.preventDefault();
+        undo();
+      } else if (
+        ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "y") ||
+        ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "z")
+      ) {
+        e.preventDefault();
+        redo();
+      }
+
+      if (e.key === "Escape") {
+        closeDrawer();
+        document.querySelectorAll(".modal-backdrop.open").forEach(m => closeModal(m));
+      }
+      if (e.key === "Enter" && modalNewWords.classList.contains("open")) {
+        handleAddCustomWords();
+      }
+      if (e.key === "Enter" && modalSavedPoems.classList.contains("open") && document.activeElement === poemSaveName) {
+        handleSaveCurrentPoem();
+      }
+    });
+
+    swatchesPicker.addEventListener("click", (e) => {
+      const swatch = e.target.closest(".swatch-item");
+      if (!swatch) return;
+      swatchesPicker.querySelectorAll(".swatch-item").forEach(s => s.classList.remove("selected"));
+      swatch.classList.add("selected");
+    });
+
+    btnSubmitNewWords.addEventListener("click", handleAddCustomWords);
+
+    // Sticky Note Drag & Dismiss
+    memoClose.addEventListener("click", (e) => {
+      e.stopPropagation();
+      fridgeMemo.style.opacity = "0";
+      setTimeout(() => fridgeMemo.remove(), 300);
+    });
+
+    let memoDragging = false;
+    let memoStartX = 0, memoStartY = 0;
+    let memoOffsetX = 0, memoOffsetY = 0;
+
+    function startMemoDrag(clientX, clientY, pointerId) {
+      memoDragging = true;
+      if (pointerId !== undefined && fridgeMemo.setPointerCapture) {
+        try { fridgeMemo.setPointerCapture(pointerId); } catch(err) {}
+      }
+      fridgeMemo.classList.add("is-dragging");
+      memoStartX = clientX;
+      memoStartY = clientY;
+      memoOffsetX = fridgeMemo.offsetLeft;
+      memoOffsetY = fridgeMemo.offsetTop;
+    }
+
+    function moveMemoDrag(clientX, clientY) {
+      if (!memoDragging) return;
+      const dx = clientX - memoStartX;
+      const dy = clientY - memoStartY;
+      const canvasRect = canvas.getBoundingClientRect();
+      const memoRect = fridgeMemo.getBoundingClientRect();
+
+      let newX = memoOffsetX + dx;
+      let newY = memoOffsetY + dy;
+
+      newX = Math.max(5, Math.min(newX, canvasRect.width - memoRect.width - 5));
+      newY = Math.max(5, Math.min(newY, canvasRect.height - memoRect.height - 5));
+
+      fridgeMemo.style.left = `${newX}px`;
+      fridgeMemo.style.top = `${newY}px`;
+    }
+
+    function endMemoDrag() {
+      if (!memoDragging) return;
+      memoDragging = false;
+      fridgeMemo.classList.remove("is-dragging");
+    }
+
+    fridgeMemo.addEventListener("pointerdown", (e) => {
+      if (e.target === memoClose || e.target.closest("#memoClose")) return;
+      e.preventDefault();
+      startMemoDrag(e.clientX, e.clientY, e.pointerId);
+    });
+
+    fridgeMemo.addEventListener("touchstart", (e) => {
+      if (e.target === memoClose || e.target.closest("#memoClose")) return;
+      if (e.touches.length === 1) {
+        if (e.cancelable) e.preventDefault();
+        if (!memoDragging) {
+          startMemoDrag(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }
+    }, { passive: false });
+
+    window.addEventListener("pointermove", (e) => {
+      if (memoDragging) moveMemoDrag(e.clientX, e.clientY);
+    });
+    window.addEventListener("pointerup", () => endMemoDrag());
+    window.addEventListener("pointercancel", () => endMemoDrag());
+
+    window.addEventListener("touchmove", (e) => {
+      if (memoDragging && e.touches.length > 0) {
+        if (e.cancelable) e.preventDefault();
+        moveMemoDrag(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+    window.addEventListener("touchend", () => endMemoDrag());
+    window.addEventListener("touchcancel", () => endMemoDrag());
+
+    // Window Resize & Orientation Change Boundary Guards
+    function handleResize() {
+      ensureMagnetsWithinBounds();
+      magnetsData.forEach(item => {
+        const el = document.getElementById(item.id);
+        if (el) {
+          el.style.left = `${item.x}px`;
+          el.style.top = `${item.y}px`;
+        }
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", () => {
+      setTimeout(handleResize, 150);
+    });
+
+    // --- INITIAL BOOTSTRAP ---
+    function initApp() {
+      const savedTheme = localStorage.getItem("fridge_theme");
+      if (savedTheme) {
+        document.body.dataset.theme = savedTheme;
+        themeSelect.value = savedTheme;
+      }
+
+      const savedStyle = localStorage.getItem("fridge_magnet_style");
+      if (savedStyle) {
+        document.body.dataset.magnetStyle = savedStyle;
+        magnetStyleSelect.value = savedStyle;
+      }
+
+      const savedSize = localStorage.getItem("fridge_magnet_size");
+      if (savedSize) {
+        setMagnetSize(savedSize);
+      }
+
+      const savedFont = localStorage.getItem("fridge_font");
+      if (savedFont) {
+        document.body.dataset.font = savedFont;
+        fontSelect.value = savedFont;
+      }
+
+      const savedGrid = localStorage.getItem("fridge_grid_snap");
+      if (savedGrid === "1") {
+        isGridSnapEnabled = true;
+        document.body.classList.add("grid-snap-enabled");
+        btnGridSnap.classList.add("active");
+      }
+
+      const savedWiggle = localStorage.getItem("fridge_idle_wiggle");
+      if (savedWiggle === "1") {
+        isIdleWiggleEnabled = true;
+        document.body.classList.add("idle-wiggle-enabled");
+        btnWiggle.classList.add("active");
+      }
+
+      initWordPacksUI();
+      updateSavedPoemsDropdown();
+      loadSavedState();
+      renderMagnets();
+      updateHistoryButtons();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+</html>
